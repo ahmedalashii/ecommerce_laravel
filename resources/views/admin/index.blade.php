@@ -39,7 +39,8 @@
                             </div>
                             <div class="content">
                                 <h6 class="mb-10">Stores</h6>
-                                <h3 class="text-bold mb-10">34567</h3>
+                                <h3 class="text-bold mb-10" data-kt-countup="true" data-kt-countup-value="34,567">34,567
+                                </h3>
                             </div>
                         </div>
                         <!-- End Icon Cart -->
@@ -57,7 +58,8 @@
                             </div>
                             <div class="content">
                                 <h6 class="mb-10">Products</h6>
-                                <h3 class="text-bold mb-10">74,567</h3>
+                                <h3 class="text-bold mb-10" data-kt-countup="true" data-kt-countup-value="74,567">74,567
+                                </h3>
                             </div>
                         </div>
                         <!-- End Icon Cart -->
@@ -70,7 +72,8 @@
                             </div>
                             <div class="content">
                                 <h6 class="mb-10">Transactions</h6>
-                                <h3 class="text-bold mb-10">24,567</h3>
+                                <h3 class="text-bold mb-10" data-kt-countup="true" data-kt-countup-value="24,567">24,567
+                                </h3>
                             </div>
                         </div>
                         <!-- End Icon Cart -->

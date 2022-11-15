@@ -2,7 +2,7 @@
   <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
           <a href="index.html">
-              <img src="{{ asset('images/logo.svg') }}" alt="logo" height="120" width="180" />
+              <img src="{{ asset('admin-panel/images/logo.svg') }}" alt="logo" height="120" width="180" />
           </a>
       </div>
       <nav class="sidebar-nav">
@@ -20,7 +20,7 @@
               </li>
 
               <li class="nav-item">
-                  <a href="{{ URL('/admin') }}">
+                  <a href="{{ URL('/admin/settings') }}">
                       <span class="icon-not-filled">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

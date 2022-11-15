@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\SettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\Admin\HomeController;
 // Admin Dashboard Routing
 Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 Route::get('/admin', [HomeController::class, 'index'])->middleware('auth');
+Route::get('/admin/settings', [SettingsController::class, 'index'])->middleware('auth');
 
 Auth::routes();
 
