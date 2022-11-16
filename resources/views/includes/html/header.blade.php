@@ -26,7 +26,8 @@
                                 <div class="info">
                                     <h6>{{ Auth::user()->name }}</h6>
                                     <div class="image">
-                                        <img src="assets/images/profile/profile-image.png" alt="" />
+                                        <img src="{{ $user->picture ?? asset('admin-panel/images/guest.png') }}"
+                                            alt="" />
                                         <span class="status"></span>
                                     </div>
                                 </div>
@@ -40,7 +41,7 @@
                                 </a>
                             </li> --}}
                             <li>
-                                <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+                                <a href="{{ URL('/admin/settings') }}"> <i class="lni lni-pencil"></i> Edit My Info </a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"

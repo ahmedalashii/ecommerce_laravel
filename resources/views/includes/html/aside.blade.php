@@ -8,10 +8,10 @@
       <nav class="sidebar-nav">
           <ul>
               <li class="nav-item">
-                  <a href="{{ URL('/admin') }}">
+                  <a href="{{ route('admin') }}">
                       <span class="icon">
-                          <svg width="22" height="22" viewBox="0 0 22 22">
-                              <path
+                          <svg width="23px" height="32px" viewBox="0 0 22 22">
+                                 <path
                                   d="M17.4167 4.58333V6.41667H13.75V4.58333H17.4167ZM8.25 4.58333V10.0833H4.58333V4.58333H8.25ZM17.4167 11.9167V17.4167H13.75V11.9167H17.4167ZM8.25 15.5833V17.4167H4.58333V15.5833H8.25ZM19.25 2.75H11.9167V8.25H19.25V2.75ZM10.0833 2.75H2.75V11.9167H10.0833V2.75ZM19.25 10.0833H11.9167V19.25H19.25V10.0833ZM10.0833 13.75H2.75V19.25H10.0833V13.75Z" />
                           </svg>
                       </span>
@@ -19,24 +19,20 @@
                   </a>
               </li>
 
-              <li class="nav-item">
-                  <a href="{{ URL('/admin/settings') }}">
+              {{-- <li class="nav-item">
+                  <a href="{{ route('admin.settings') }}">
                       <span class="icon-not-filled">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-settings">
-                              <circle cx="12" cy="12" r="3"></circle>
-                              <path
-                                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                              </path>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="23px" height="32px" viewBox="0 0 24 24">
+                              <path fill="currentColor"
+                                  d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z" />
                           </svg>
                       </span>
-                      <span class="text">Settings</span>
+                      <span class="text">Edit Admin Info</span>
                   </a>
-              </li>
+              </li> --}}
 
               <li class="nav-item">
-                  <a href="{{ URL('/admin') }}">
+                  <a href="{{ route('admin') }}">
                       <span class="icon-not-filled">
                           <svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1"
                               viewBox="0 0 32 32" width="23px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +46,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{ URL('/admin') }}">
+                  <a href="{{ route('admin') }}">
                       <span class="icon-not-filled">
                           <svg xmlns="http://www.w3.org/2000/svg" width="23px" height="32px" class="bi bi-cart"
                               viewBox="0 0 16 16">
@@ -62,7 +58,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="{{ URL('/admin') }}">
+                  <a href="{{ route('admin') }}">
                       <span class="icon-not-filled">
                           <i class="lni lni-credit-cards" style="font-size: 23px;"></i>
                       </span>
@@ -90,7 +86,7 @@
                       </li>
                   </ul>
               </li> --}}
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                   <a href="tables.html">
                       <span class="icon">
                           <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -101,10 +97,10 @@
                       </span>
                       <span class="text">Tables</span>
                   </a>
-              </li>
-              <span class="divider">
+              </li> --}}
+              {{-- <span class="divider">
                   <hr />
-              </span>
+              </span> --}}
           </ul>
       </nav>
   </aside>

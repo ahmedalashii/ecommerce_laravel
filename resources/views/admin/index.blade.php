@@ -71,7 +71,7 @@
                                 <i class="lni lni-credit-cards"></i>
                             </div>
                             <div class="content">
-                                <h6 class="mb-10">Transactions</h6>
+                                <h6 class="mb-10">Purchase Transactions</h6>
                                 <h3 class="text-bold mb-10" data-kt-countup="true" data-kt-countup-value="24,567">24,567
                                 </h3>
                             </div>
