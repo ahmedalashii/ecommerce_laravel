@@ -30,7 +30,14 @@ Route::fallback(function () {
 Route::get('/', [HomeController::class, 'index'])->middleware('auth')->prefix('admin')->name('admin');
 Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
     Route::get('/settings', [EditAdminInfoController::class, 'index'])->middleware('auth')->name('settings');
+    Route::get('/store/index', [StoreController::class, 'index'])->middleware('auth')->name('store.index');
     Route::get('/store/add', [StoreController::class, 'create'])->middleware('auth')->name('store.add');
+    Route::post('/store/store', [StoreController::class, 'store'])->middleware('auth')->name('store.store');
+    Route::get('/store/edit/{id}', [StoreController::class, 'edit'])->middleware('auth')->name('store.edit');
+    Route::post('/store/update/{id}', [StoreController::class, 'update'])->middleware('auth')->name('store.update');
+    Route::post('/store/destroy/{id}', [StoreController::class, 'destroy'])->middleware('auth')->name('store.destroy');
+    Route::post('/store/restore/{id}', [StoreController::class, 'restore'])->middleware('auth')->name('store.restore');
+
     Route::post('/edit/info/{id}', [EditAdminInfoController::class, 'update'])->middleware('auth')->name('edit.info');
 });
 // })->prefix('admin')->name('admin'); // instead of the array passed above

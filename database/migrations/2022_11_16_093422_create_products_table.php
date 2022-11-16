@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('store_id');
             $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

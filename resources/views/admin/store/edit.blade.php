@@ -25,7 +25,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="titlemb-30">
-                                <h2>Add New Store</h2>
+                                <h2>Edit Store</h2>
                             </div>
                         </div>
                         <!-- end col -->
@@ -47,20 +47,21 @@
                       ">
                                 <h6>Store Info</h6>
                             </div>
-                            <form action="{{ route('admin.store.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.store.update', $store->id) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="profile-info">
                                     <div class="col-12">
                                         <div class="input-style-1">
                                             <label for="name">Name</label>
                                             <input type="text" placeholder="Name" id="name" name="name"
-                                                value="" />
+                                                value="{{ $store->name }}" />
                                         </div>
                                     </div>
                                     <div class="input-style-1">
                                         <label for="address">Address</label>
-                                        <input type="text" placeholder="Address" value="" name="address"
-                                            id="address" />
+                                        <input type="text" placeholder="Address" value="{{ $store->address }}"
+                                            name="address" id="address" />
                                     </div>
                                     <div class="card">
                                         <div class="input-style-1">
@@ -72,7 +73,7 @@
                                     </div>
                                     <div class="col-12">
                                         <button class="main-btn primary-btn btn-hover" type="submit">
-                                            Add Store
+                                            Update Store
                                         </button>
                                     </div>
                                 </div>
