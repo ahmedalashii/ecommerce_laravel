@@ -34,42 +34,44 @@ class StoreController extends Controller
         $name = $request->input('name');
         $address = $request->input('address');
         $logo = $request->file('logo');
-
         $path = 'uploads/images/'; // in the storage/app implicitly ..
-        $logo_name = time() + rand(1, 1000000) . '.' . $logo->getClientOriginalExtension();
 
-        Storage::disk('public')->put($path . $logo_name, file_get_contents($logo));
-
+        // First Way to save a file:
+        // $logo_name = time() + rand(1, 1000000) . '.' . $logo->getClientOriginalExtension();
+        // Storage::disk('public')->put($path . $logo_name, file_get_contents($logo));
         // $status = Storage::disk('local')->exists($path . $name); // to detect if the storing process has been successfully ended.
+
+        // Second Way to save a file:
+        $logo_link =  $logo->store($path, ['disk' => 'public']);
 
         $store = new Store();
         $store->name = $name;
         $store->address = $address;
         // Storing the logo's path in database:
-        $store->logo = $path . $logo_name;
+        $store->logo = $logo_link;
         $store->save();
-        return redirect('admin/store/index'); // send the status and a success message must be shown
+        return redirect('admin/store/index')->with(['success' => 'Store Added Successfully', 'type' => 'success']); // send the status and a success message must be shown
     }
 
-    public function edit($id)
+    public function edit(Store $store)
     {
-        $store = Store::find($id);
         return view('admin.store.edit')->with('store', $store);
     }
 
     public function update(StoreRequest $request, $id)
     {
         // Deleting Old Image Then Replacing it with the new one:
-        if (file_exists(storage_path() . "/app/" . $request->input('old_logo'))) {
-            unlink(str_replace('\\', '/', storage_path() . "/app/" . $request->input('old_logo')));
-        }
-
-
+        Storage::disk('public')->delete(Store::find($id)->logo);
         $logo = $request->file('logo');
         $path = 'uploads/images/'; // in the storage/app implicitly ..
-        $logo_name = time() + rand(1, 1000000) . '.' . $logo->getClientOriginalExtension();
-        Storage::disk('local')->put($path . $logo_name, file_get_contents($logo));
-        // $status = Storage::disk('local')->exists($path . $logo_name); // to detect if the storing process has been successfully ended.
+
+        // $logo_name = time() + rand(1, 1000000) . '.' . $logo->getClientOriginalExtension();
+
+
+        // Storage::disk('public')->put($path . $logo_name, file_get_contents($logo));
+        // $status = Storage::disk('public')->exists($path . $logo_name); // to detect if the storing process has been successfully ended.
+
+        $logo_link =  $logo->store($path, ['disk' => 'public']);
 
         $name = $request->input('name');
         $address = $request->input('address');
@@ -77,10 +79,11 @@ class StoreController extends Controller
         $store  = Store::find($id);
         $store->name = $name;
         $store->address = $address;
-        $store->logo = $path . $logo_name;
+        // $store->logo = $path . $logo_name;
+        $store->logo = $logo_link;
         // Updating Store:
         $store->save();
-        return redirect('admin/store/index');
+        return redirect('admin/store/index')->with(['success' => 'Store Updated Successfully', 'type' => 'success']); // with function with redirect creates a session
     }
 
 
@@ -96,12 +99,12 @@ class StoreController extends Controller
         if ($destroy) {
             // showing success message
         }
-        return redirect()->back();
+        return redirect()->back()->with(['success' => 'Store Deactivated Successfully', 'type' => 'success']);
     }
 
     public function restore($id)
     {
         Store::onlyTrashed()->find($id)->restore();
-        return redirect()->back();
+        return redirect()->back()->with(['success' => 'Store Activated Successfully', 'type' => 'success']);
     }
 }

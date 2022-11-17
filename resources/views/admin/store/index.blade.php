@@ -16,6 +16,11 @@
 
         <section class="section">
             <div class="container-fluid">
+                {{-- <div class="col-12">
+                    @if (session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                </div> --}}
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card-style">
@@ -47,8 +52,8 @@
                                             <tr>
                                                 <td>
                                                     <div class="employee-image">
-                                                        <img src="{{ $store->logo_image }}" alt="No image!"
-                                                            width="100%" height="100%" />
+                                                        <img src="{{ $store->logo_image }}" alt="No image!" width="100%"
+                                                            height="100%" />
                                                     </div>
                                                 </td>
                                                 <td class="min-width">
