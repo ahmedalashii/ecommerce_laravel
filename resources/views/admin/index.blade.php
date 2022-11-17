@@ -61,7 +61,7 @@
                                     </svg>
                                 </div>
                                 <div class="content">
-                                    <h6 class="mb-10">Products</h6>
+                                    <h6 class="mb-10">Available Products</h6>
                                     <h3 class="text-bold mb-10" data-kt-countup="true"
                                         data-kt-countup-value="{{ $products_count }}">{{ $products_count }}
                                     </h3>
@@ -90,7 +90,8 @@
                     </div>
 
                 </div>
-
+                
+                {{-- 
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card-style mb-30">
@@ -156,7 +157,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
     </main>

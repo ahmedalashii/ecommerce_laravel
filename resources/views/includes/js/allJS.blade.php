@@ -15,6 +15,14 @@
                 position: "bottom-end",
                 icon: "{{ session('type') }}",
             });
+        @elseif (session('fail'))
+            Swal.fire({
+                title: "{{ session('fail') }}",
+                toast: true,
+                showConfirmButton: false,
+                position: "bottom-end",
+                icon: "{{ session('type') }}",
+            });
         @endif
 
         $(".sidebar-nav").find('.nav-item-has-children ul li a').each(function($index, $element) {

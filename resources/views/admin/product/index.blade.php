@@ -101,9 +101,9 @@
                                                     <td class="min-width">
                                                         <p>
                                                             @if ($product->is_discount ?? false)
-                                                                Yes
+                                                                Yes <b style="color: #219653;">&#10003;</b>
                                                             @else
-                                                                No
+                                                                No <b style="color: #d50100;">&#x2717;</b>
                                                             @endif
                                                         </p>
                                                     </td>

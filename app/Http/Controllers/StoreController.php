@@ -79,7 +79,8 @@ class StoreController extends Controller
         $store->logo = $logo_link;
         // Updating Store:
         $store->save();
-        return redirect('admin/store/index')->with(['success' => 'Store Updated Successfully', 'type' => 'success']); // with function with redirect creates a session
+        // with function with redirect creates a session
+        return redirect('admin/store/index')->with(['success' => 'Store Updated Successfully', 'type' => 'success']);
     }
 
 
@@ -90,11 +91,12 @@ class StoreController extends Controller
             deleted_at >> timestamp >> null
             when deleting the row >> deleted_at = current timestamp 
         */
-        $destroy = $store->delete();
-        if ($destroy) {
-            // showing success message
+        $destroy_status = false;
+        // if the store doesn't have products >> then it's allowed to be deactivated >> that's kind of logic :)
+        if ($store->productsWithTrashed->isEmpty()) {
+            $destroy_status = $store->delete();
         }
-        return redirect()->back()->with(['success' => 'Store Deactivated Successfully', 'type' => 'success']);
+        return redirect()->back()->with([$destroy_status ? 'success' : 'fail' => $destroy_status ? 'Store Deactivated Successfully' : $store->name . ' can\'t be deactivated, since it\'s linked to other products!', 'type' => $destroy_status ? 'success' : 'error']);
     }
 
     public function restore($id)
