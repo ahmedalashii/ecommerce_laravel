@@ -31,6 +31,9 @@
                                         <thead>
                                             <tr>
                                                 <th>
+                                                    <h6>#</h6>
+                                                </th>
+                                                <th>
                                                     <h6>Logo</h6>
                                                 </th>
                                                 <th>
@@ -51,6 +54,9 @@
                                         <tbody>
                                             @foreach ($stores as $store)
                                                 <tr>
+                                                    <td class="min-width">
+                                                        <p>{{ $store->id }}</p>
+                                                    </td>
                                                     <td>
                                                         <div class="employee-image">
                                                             <img src="{{ $store->logo_image }}" alt="No image!"
@@ -79,7 +85,7 @@
                                                                 Edit
                                                             </button>
                                                         @else
-                                                            <form action="{{ route('admin.store.edit' , $store->id) }}"
+                                                            <form action="{{ route('admin.store.edit', $store->id) }}"
                                                                 method="GET">
                                                                 @csrf
                                                                 <button class="main-btn dark-btn rounded-full btn-hover"
@@ -91,7 +97,7 @@
                                                     </td>
                                                     <td>
                                                         @if ($store->trashed())
-                                                            <form action="{{ route('admin.store.restore' , $store->id) }}"
+                                                            <form action="{{ route('admin.store.restore', $store->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <button class="main-btn success-btn rounded-full btn-hover"
@@ -100,7 +106,7 @@
                                                                 </button>
                                                             </form>
                                                         @else
-                                                            <form action="{{ route('admin.store.destroy' , $store->id) }}"
+                                                            <form action="{{ route('admin.store.destroy', $store->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <button class="main-btn danger-btn rounded-full btn-hover"

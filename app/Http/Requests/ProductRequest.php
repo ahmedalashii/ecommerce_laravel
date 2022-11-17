@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Store;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProductRequest extends FormRequest
@@ -13,7 +14,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,37 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
+        $stores = Store::select('id')->get();
+        $store_ids = "";
+        for ($i = 0; $i < count($stores); $i++) {
+            if ($i == count($stores) - 1) {
+                $store_ids .= $stores[$i]->id;
+            } else {
+                $store_ids .= $stores[$i]->id  . ",";
+            }
+        }
         return [
-            //
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'base_price' => [
+                'required',
+                'numeric',
+                'min:10',
+                'regex:/^(([0-9]*)(\.([0-9]+))?)$/',
+            ],
+            'discount_price' => [
+                'required',
+                'numeric',
+                'min:10',
+                'regex:/^(([0-9]*)(\.([0-9]+))?)$/',
+            ],
+            'store' => 'required|numeric|in:' . $store_ids,
+            'product_picture' => 'required|mimes:jpeg,jpg,png'
         ];
+    }
+
+    public function messages()
+    {
+        return [];
     }
 }

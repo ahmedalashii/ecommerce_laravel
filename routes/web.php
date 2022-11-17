@@ -47,8 +47,8 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
     Route::get('/product/add', [ProductController::class, 'create'])->middleware('auth')->name('product.add');
     Route::post('/product/store', [ProductController::class, 'store'])->middleware('auth')->name('product.store');
     Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->middleware('auth')->name('product.edit');
-    Route::post('/product/update/{id}', [ProductController::class, 'update'])->middleware('auth')->name('product.update');
-    Route::post('/product/destroy/{id}', [ProductController::class, 'destroy'])->middleware('auth')->name('product.destroy');
+    Route::post('/product/update/{product}', [ProductController::class, 'update'])->middleware('auth')->name('product.update');
+    Route::post('/product/destroy/{product}', [ProductController::class, 'destroy'])->middleware('auth')->name('product.destroy');
     Route::post('/product/restore/{id}', [ProductController::class, 'restore'])->middleware('auth')->name('product.restore');
 });
 // })->prefix('admin')->name('admin'); // instead of the array passed above

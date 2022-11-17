@@ -29,19 +29,28 @@
                                                     <h6>#</h6>
                                                 </th>
                                                 <th>
+                                                    <h6>Picture</h6>
+                                                </th>
+                                                <th>
                                                     <h6>Name</h6>
                                                 </th>
-                                                <th>
+                                                {{-- <th>
                                                     <h6>Description</h6>
-                                                </th>
+                                                </th> --}}
                                                 <th>
                                                     <h6>Store</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Status</h6>
                                                 </th>
                                                 <th>
                                                     <h6>Base Price</h6>
                                                 </th>
                                                 <th>
                                                     <h6>Discount Price</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>is there a discount?</h6>
                                                 </th>
                                                 <th>
                                                     <h6>Edit</h6>
@@ -58,11 +67,20 @@
                                                     <td class="min-width">
                                                         <p>{{ $product->id }}</p>
                                                     </td>
+                                                    <td>
+                                                        <div class="employee-image">
+                                                            <img src="{{ $product->product_picture }}" alt="No image!"
+                                                                width="100%" height="100%" />
+                                                        </div>
+                                                    </td>
                                                     <td class="min-width">
                                                         <p>{{ $product->name }}</p>
                                                     </td>
+                                                    {{-- <td class="min-width">
+                                                        <p>{{ substr($product->description, 0, 20) }}...</p>
+                                                    </td> --}}
                                                     <td class="min-width">
-                                                        <p>{{ $product->description }}</p>
+                                                        <p style="color: #041d81">{{ $product->store->name }}</p>
                                                     </td>
                                                     <td class="min-width">
                                                         <span
@@ -75,10 +93,19 @@
                                                         </span>
                                                     </td>
                                                     <td class="min-width">
-                                                        <p>{{ $product->base_price }}</p>
+                                                        <p>${{ $product->base_price }}</p>
                                                     </td>
                                                     <td class="min-width">
-                                                        <p>{{ $product->discount_price }}</p>
+                                                        <p>${{ $product->discount_price }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>
+                                                            @if ($product->is_discount ?? false)
+                                                                Yes
+                                                            @else
+                                                                No
+                                                            @endif
+                                                        </p>
                                                     </td>
                                                     <td>
                                                         @if ($product->trashed())
@@ -100,8 +127,9 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($store->trashed())
-                                                            <form action="{{ URL('admin/product/restore/' . $product->id) }}"
+                                                        @if ($product->trashed())
+                                                            <form
+                                                                action="{{ URL('admin/product/restore/' . $product->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <button class="main-btn success-btn rounded-full btn-hover"
@@ -110,7 +138,8 @@
                                                                 </button>
                                                             </form>
                                                         @else
-                                                            <form action="{{ URL('admin/product/destroy/' . $product->id) }}"
+                                                            <form
+                                                                action="{{ URL('admin/product/destroy/' . $product->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <button class="main-btn danger-btn rounded-full btn-hover"

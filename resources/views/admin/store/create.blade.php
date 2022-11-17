@@ -9,7 +9,7 @@
         <section class="section">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 mt-2">
                         @foreach ($errors->all() as $message)
                             <div class="alert alert-danger">{{ $message }}</div>
                         @endforeach
@@ -48,21 +48,23 @@
                                 <div class="profile-info">
                                     <div class="col-12">
                                         <div class="input-style-1">
-                                            <label for="name">Name</label>
+                                            <label for="name">Name <b style="color: #d50100">*</b></label>
                                             <input type="text" placeholder="Name" id="name" name="name"
-                                                value="" />
+                                                value="" required />
                                         </div>
                                     </div>
                                     <div class="input-style-1">
-                                        <label for="address">Address</label>
+                                        <label for="address">Address <b style="color: #d50100">*</b></label>
                                         <input type="text" placeholder="Address" value="" name="address"
-                                            id="address" />
+                                            id="address" required />
                                     </div>
                                     <div class="card">
                                         <div class="input-style-1">
                                             <div class="mb-3">
-                                                <label for="logo" class="form-label">Logo</label>
-                                                <input class="form-control" type="file" id="logo" name="logo" />
+                                                <label for="logo" class="form-label">Logo <b
+                                                        style="color: #d50100">*</b></label>
+                                                <input class="form-control" type="file" id="logo" name="logo"
+                                                    accept="image/png, image/gif, image/jpeg" required />
                                             </div>
                                         </div>
                                     </div>

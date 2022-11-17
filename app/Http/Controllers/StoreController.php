@@ -34,7 +34,7 @@ class StoreController extends Controller
         $name = $request->input('name');
         $address = $request->input('address');
         $logo = $request->file('logo');
-        $path = 'uploads/images/'; // in the storage/app implicitly ..
+        $path = 'uploads/images/stores/';
 
         // First Way to save a file:
         // $logo_name = time() + rand(1, 1000000) . '.' . $logo->getClientOriginalExtension();
@@ -63,14 +63,14 @@ class StoreController extends Controller
         // Deleting Old Image Then Replacing it with the new one:
         Storage::disk('public')->delete($store->logo);
         $logo = $request->file('logo');
-        $path = 'uploads/images/';
+        $path = 'uploads/images/stores/';
         $logo_link =  $logo->store($path, ['disk' => 'public']);
 
         // More clean way:
         // $attibutes = $request->validated();
         // $attibutes["logo"] = $logo_link;
         // $id->update($attibutes);
-        
+
         $name = $request->input('name');
         $address = $request->input('address');
 
