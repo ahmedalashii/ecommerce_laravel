@@ -47,7 +47,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="employee-image">
-                                                        <img src="{{ asset("storage/$store->logo") }}" alt="No image!"
+                                                        <img src="{{ $store->logo_image }}" alt="No image!"
                                                             width="100%" height="100%" />
                                                     </div>
                                                 </td>

@@ -26,7 +26,7 @@
                                 <div class="info">
                                     <h6>{{ Auth::user()->name }}</h6>
                                     <div class="image">
-                                        <img src="{{ $user->picture ?? asset('admin-panel/images/guest.png') }}"
+                                        <img src="{{ Auth::user()->user_picture }}"
                                             alt="" />
                                         <span class="status"></span>
                                     </div>
