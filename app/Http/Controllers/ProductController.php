@@ -10,7 +10,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::withTrashed()->get();
+        $paginate = 5;
+        $products = Product::withTrashed()->paginate($paginate);
         return view('admin.product.index')->with('products', $products);
     }
 
@@ -24,10 +25,21 @@ class ProductController extends Controller
     {
     }
 
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $product = Product::find($id);
         $stores = Store::select('id', 'name')->get();
         return view('admin.product.edit')->with('product', $product)->with('stores', $stores);
+    }
+
+    public function update(Request $request, $id)
+    {
+    }
+
+    public function destroy($id)
+    {
+    }
+
+    public function restore($id)
+    {
     }
 }

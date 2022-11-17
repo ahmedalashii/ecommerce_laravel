@@ -25,99 +25,107 @@
                     <div class="col-lg-12">
                         <div class="card-style">
                             <h6 class="mb-10">All Stores</h6>
-                            <div class="table-wrapper table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                <h6>Logo</h6>
-                                            </th>
-                                            <th>
-                                                <h6>Name</h6>
-                                            </th>
-                                            <th>
-                                                <h6>Status</h6>
-                                            </th>
-                                            <th>
-                                                <h6>Edit</h6>
-                                            </th>
-                                            <th>
-                                                <h6>Delete</h6>
-                                            </th>
-                                        </tr>
-                                        <!-- end table row-->
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($stores as $store)
+                            @if ($stores->isNotEmpty())
+                                <div class="table-wrapper table-responsive">
+                                    <table class="table">
+                                        <thead>
                                             <tr>
-                                                <td>
-                                                    <div class="employee-image">
-                                                        <img src="{{ $store->logo_image }}" alt="No image!" width="100%"
-                                                            height="100%" />
-                                                    </div>
-                                                </td>
-                                                <td class="min-width">
-                                                    <p>{{ $store->name }}</p>
-                                                </td>
-                                                <td class="min-width">
-                                                    <span
-                                                        class="status-btn @if ($store->trashed()) close-btn @else active-btn @endif">
+                                                <th>
+                                                    <h6>Logo</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Name</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Status</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Edit</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Delete</h6>
+                                                </th>
+                                            </tr>
+                                            <!-- end table row-->
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($stores as $store)
+                                                <tr>
+                                                    <td>
+                                                        <div class="employee-image">
+                                                            <img src="{{ $store->logo_image }}" alt="No image!"
+                                                                width="100%" height="100%" />
+                                                        </div>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>{{ $store->name }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <span
+                                                            class="status-btn @if ($store->trashed()) close-btn @else active-btn @endif">
+                                                            @if ($store->trashed())
+                                                                Closed
+                                                            @else
+                                                                Active
+                                                            @endif
+                                                        </span>
+                                                    </td>
+                                                    <td>
                                                         @if ($store->trashed())
-                                                            Closed
-                                                        @else
-                                                            Active
-                                                        @endif
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    @if ($store->trashed())
-                                                        @csrf
-                                                        <button class="main-btn light-btn rounded-full btn-hover"
-                                                            style="width: 100px; padding: 11px; color: grey !important; cursor: not-allowed;"
-                                                            disabled>
-                                                            Edit
-                                                        </button>
-                                                    @else
-                                                        <form action="{{ URL('admin/store/edit/' . $store->id) }}"
-                                                            method="GET">
                                                             @csrf
-                                                            <button class="main-btn dark-btn rounded-full btn-hover"
-                                                                type="submit" style="width: 100px; padding: 11px;">
+                                                            <button class="main-btn light-btn rounded-full btn-hover"
+                                                                style="width: 100px; padding: 11px; color: grey !important; cursor: not-allowed;"
+                                                                disabled>
                                                                 Edit
                                                             </button>
-                                                        </form>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($store->trashed())
-                                                        <form action="{{ URL('admin/store/restore/' . $store->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            <button class="main-btn success-btn rounded-full btn-hover"
-                                                                type="submit" style="width: 100px; padding: 11px;">
-                                                                Activate
-                                                            </button>
-                                                        </form>
-                                                    @else
-                                                        <form action="{{ URL('admin/store/destroy/' . $store->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            <button class="main-btn danger-btn rounded-full btn-hover"
-                                                                type="submit" style="width: 100px; padding: 11px;">
-                                                                Deactivate
-                                                            </button>
-                                                        </form>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <div>
-                                    {{ $stores->links() }}
+                                                        @else
+                                                            <form action="{{ route('admin.store.edit' , $store->id) }}"
+                                                                method="GET">
+                                                                @csrf
+                                                                <button class="main-btn dark-btn rounded-full btn-hover"
+                                                                    type="submit" style="width: 100px; padding: 11px;">
+                                                                    Edit
+                                                                </button>
+                                                            </form>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($store->trashed())
+                                                            <form action="{{ route('admin.store.restore' , $store->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <button class="main-btn success-btn rounded-full btn-hover"
+                                                                    type="submit" style="width: 100px; padding: 11px;">
+                                                                    Activate
+                                                                </button>
+                                                            </form>
+                                                        @else
+                                                            <form action="{{ route('admin.store.destroy' , $store->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <button class="main-btn danger-btn rounded-full btn-hover"
+                                                                    type="submit" style="width: 100px; padding: 11px;">
+                                                                    Deactivate
+                                                                </button>
+                                                            </form>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <!-- end table -->
+                                    <div class="d-flex justify-content-center mt-5">
+                                        {{ $stores->links() }}
+                                    </div>
                                 </div>
-                                <!-- end table -->
-                            </div>
+                            @else
+                                <p>
+                                <h1>No Stores added yet.</h1>
+                                <a href="{{ route('admin.store.add') }}">Click here to add a
+                                    store.</a>
+                                </p>
+                            @endif
                         </div>
                         <!-- end card -->
                     </div>

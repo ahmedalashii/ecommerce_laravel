@@ -9,10 +9,6 @@
         <section class="section">
             <div class="container-fluid">
                 <div class="row">
-                    {{-- @if ($status ?? false)
-                        <div class="alert alert-success">Store has been added successfully</div>
-                    @endif --}}
-
                     <div class="col-12">
                         @foreach ($errors->all() as $message)
                             <div class="alert alert-danger">{{ $message }}</div>

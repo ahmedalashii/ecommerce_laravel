@@ -41,10 +41,10 @@
                                 <div class="profile-info">
                                     <div class="d-flex align-items-center mb-30">
                                         <div class="profile-image">
-                                            <img src="{{ $user->picture ?? asset('admin-panel/images/guest.png') }}"
-                                                alt="" />
+                                            <img src="{{ Auth::user()->user_picture }}" alt="No Image!" id="picture_user"
+                                                style="width: 100%; height: 100%;" />
                                             <div class="update-image">
-                                                <input type="file" id="user_picture" />
+                                                <input type="file" id="user_picture" name="user_picture" />
                                                 <label for="user_picture"><i class="lni lni-cloud-upload"></i></label>
                                             </div>
                                         </div>

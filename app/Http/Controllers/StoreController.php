@@ -11,8 +11,8 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $paginate = 6;
-        $stores = Store::withTrashed()->paginate();
+        $paginate = 3;
+        $stores = Store::withTrashed()->paginate($paginate);
         return view('admin.store.index')->with('stores', $stores);
     }
 
@@ -58,28 +58,24 @@ class StoreController extends Controller
         return view('admin.store.edit')->with('store', $store);
     }
 
-    public function update(StoreRequest $request, $id)
+    public function update(StoreRequest $request, Store $store)
     {
         // Deleting Old Image Then Replacing it with the new one:
-        Storage::disk('public')->delete(Store::find($id)->logo);
+        Storage::disk('public')->delete($store->logo);
         $logo = $request->file('logo');
-        $path = 'uploads/images/'; // in the storage/app implicitly ..
-
-        // $logo_name = time() + rand(1, 1000000) . '.' . $logo->getClientOriginalExtension();
-
-
-        // Storage::disk('public')->put($path . $logo_name, file_get_contents($logo));
-        // $status = Storage::disk('public')->exists($path . $logo_name); // to detect if the storing process has been successfully ended.
-
+        $path = 'uploads/images/';
         $logo_link =  $logo->store($path, ['disk' => 'public']);
 
+        // More clean way:
+        // $attibutes = $request->validated();
+        // $attibutes["logo"] = $logo_link;
+        // $id->update($attibutes);
+        
         $name = $request->input('name');
         $address = $request->input('address');
 
-        $store  = Store::find($id);
         $store->name = $name;
         $store->address = $address;
-        // $store->logo = $path . $logo_name;
         $store->logo = $logo_link;
         // Updating Store:
         $store->save();
@@ -87,14 +83,13 @@ class StoreController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Store $store)
     {
         /*
             Soft Delete:
             deleted_at >> timestamp >> null
             when deleting the row >> deleted_at = current timestamp 
         */
-        $store = Store::find($id);
         $destroy = $store->delete();
         if ($destroy) {
             // showing success message
