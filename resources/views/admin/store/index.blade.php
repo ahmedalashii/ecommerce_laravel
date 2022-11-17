@@ -35,6 +35,9 @@
                                                     <h6>Name</h6>
                                                 </th>
                                                 <th>
+                                                    <h6>Address</h6>
+                                                </th>
+                                                <th>
                                                     <h6>Status</h6>
                                                 </th>
                                                 <th>
@@ -60,6 +63,9 @@
                                                     </td>
                                                     <td class="min-width">
                                                         <p>{{ $store->name }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>{{ $store->address }}</p>
                                                     </td>
                                                     <td class="min-width">
                                                         <span

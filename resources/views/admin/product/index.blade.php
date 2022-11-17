@@ -50,7 +50,7 @@
                                                     <h6>Discount Price</h6>
                                                 </th>
                                                 <th>
-                                                    <h6>is there a discount?</h6>
+                                                    <h6>is discount allowed?</h6>
                                                 </th>
                                                 <th>
                                                     <h6>Edit</h6>
