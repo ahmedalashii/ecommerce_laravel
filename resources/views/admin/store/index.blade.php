@@ -34,7 +34,10 @@
                                                 <h6>Status</h6>
                                             </th>
                                             <th>
-                                                <h6>Actions</h6>
+                                                <h6>Edit</h6>
+                                            </th>
+                                            <th>
+                                                <h6>Delete</h6>
                                             </th>
                                         </tr>
                                         <!-- end table row-->
@@ -44,8 +47,8 @@
                                             <tr>
                                                 <td>
                                                     <div class="employee-image">
-                                                        <img src="{{ asset( "storage/app/". $store->logo) }}"
-                                                            alt="No image!" />
+                                                        <img src="{{ asset("storage/$store->logo") }}" alt="No image!"
+                                                            width="100%" height="100%" />
                                                     </div>
                                                 </td>
                                                 <td class="min-width">
@@ -62,30 +65,44 @@
                                                     </span>
                                                 </td>
                                                 <td>
-                                                    <div class="action">
-                                                        @if ($store->trashed())
-                                                            <form action="{{ URL('admin/store/restore/' . $store->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                <button class="text-danger" type="submit">
-                                                                    <svg width="17px" height="20px"
-                                                                        viewBox="-32 0 512 512"
-                                                                        xmlns="http://www.w3.org/2000/svg">
-                                                                        <path fill="green"
-                                                                            d="M53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32zm70.11-175.8l89.38-94.26a15.41 15.41 0 0 1 22.62 0l89.38 94.26c10.08 10.62 2.94 28.8-11.32 28.8H256v112a16 16 0 0 1-16 16h-32a16 16 0 0 1-16-16V320h-57.37c-14.26 0-21.4-18.18-11.32-28.8zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z" />
-                                                                    </svg>
-                                                                </button>
-                                                            </form>
-                                                        @else
-                                                            <form action="{{ URL('admin/store/destroy/' . $store->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                <button class="text-danger" type="submit">
-                                                                    <i class="lni lni-trash-can"></i>
-                                                                </button>
-                                                            </form>
-                                                        @endif
-                                                    </div>
+                                                    @if ($store->trashed())
+                                                        @csrf
+                                                        <button class="main-btn light-btn rounded-full btn-hover"
+                                                            style="width: 100px; padding: 11px; color: grey !important; cursor: not-allowed;"
+                                                            disabled>
+                                                            Edit
+                                                        </button>
+                                                    @else
+                                                        <form action="{{ URL('admin/store/edit/' . $store->id) }}"
+                                                            method="GET">
+                                                            @csrf
+                                                            <button class="main-btn dark-btn rounded-full btn-hover"
+                                                                type="submit" style="width: 100px; padding: 11px;">
+                                                                Edit
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($store->trashed())
+                                                        <form action="{{ URL('admin/store/restore/' . $store->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <button class="main-btn success-btn rounded-full btn-hover"
+                                                                type="submit" style="width: 100px; padding: 11px;">
+                                                                Activate
+                                                            </button>
+                                                        </form>
+                                                    @else
+                                                        <form action="{{ URL('admin/store/destroy/' . $store->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <button class="main-btn danger-btn rounded-full btn-hover"
+                                                                type="submit" style="width: 100px; padding: 11px;">
+                                                                Deactivate
+                                                            </button>
+                                                        </form>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

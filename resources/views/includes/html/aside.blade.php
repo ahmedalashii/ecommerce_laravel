@@ -49,12 +49,13 @@
                           <a href="{{ route('admin.store.add') }}">Add New Store</a>
                       </li>
                       <li>
-                          <a href="{{ route('admin.store.index') }}">View All stores</a>
+                          <a href="{{ route('admin.store.index') }}">View All Stores</a>
                       </li>
                   </ul>
               </li>
-              <li class="nav-item">
-                  <a href="{{ route('admin') }}">
+              <li class="nav-item nav-item-has-children">
+                  <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#product_menu"
+                      aria-controls="product_menu" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="icon-not-filled">
                           <svg xmlns="http://www.w3.org/2000/svg" width="23px" height="32px" class="bi bi-cart"
                               viewBox="0 0 16 16">
@@ -64,6 +65,14 @@
                       </span>
                       <span class="text">Products</span>
                   </a>
+                  <ul id="product_menu" class="collapse dropdown-nav">
+                      <li>
+                          <a href="{{ route('admin.product.add') }}">Add New Product</a>
+                      </li>
+                      <li>
+                          <a href="{{ route('admin.product.index') }}">View All Products</a>
+                      </li>
+                  </ul>
               </li>
               <li class="nav-item">
                   <a href="{{ route('admin') }}">

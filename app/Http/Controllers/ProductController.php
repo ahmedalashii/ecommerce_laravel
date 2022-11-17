@@ -20,6 +20,10 @@ class ProductController extends Controller
         return view('admin.product.create')->with('stores', $stores);
     }
 
+    public function store()
+    {
+    }
+
     public function edit($id)
     {
         $product = Product::find($id);

@@ -68,6 +68,8 @@
                                             <div class="mb-3">
                                                 <label for="logo" class="form-label">Logo</label>
                                                 <input class="form-control" type="file" id="logo" name="logo" />
+                                                <input class="form-control" type="hidden" id="old_logo" name="old_logo"
+                                                    value="{{ $store->logo }}" />
                                             </div>
                                         </div>
                                     </div>

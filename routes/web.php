@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\EditAdminInfoController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::fallback(function () {
 Route::get('/', [HomeController::class, 'index'])->middleware('auth')->prefix('admin')->name('admin');
 Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
     Route::get('/settings', [EditAdminInfoController::class, 'index'])->middleware('auth')->name('settings');
+    Route::post('/edit/info/{id}', [EditAdminInfoController::class, 'update'])->middleware('auth')->name('edit.info');
+    // Store
     Route::get('/store/index', [StoreController::class, 'index'])->middleware('auth')->name('store.index');
     Route::get('/store/add', [StoreController::class, 'create'])->middleware('auth')->name('store.add');
     Route::post('/store/store', [StoreController::class, 'store'])->middleware('auth')->name('store.store');
@@ -37,8 +40,11 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
     Route::post('/store/update/{id}', [StoreController::class, 'update'])->middleware('auth')->name('store.update');
     Route::post('/store/destroy/{id}', [StoreController::class, 'destroy'])->middleware('auth')->name('store.destroy');
     Route::post('/store/restore/{id}', [StoreController::class, 'restore'])->middleware('auth')->name('store.restore');
-
-    Route::post('/edit/info/{id}', [EditAdminInfoController::class, 'update'])->middleware('auth')->name('edit.info');
+    // Product
+    Route::get('/product/index', [ProductController::class, 'index'])->middleware('auth')->name('product.index');
+    Route::get('/product/add', [ProductController::class, 'create'])->middleware('auth')->name('product.add');
+    Route::post('/product/store', [ProductController::class, 'store'])->middleware('auth')->name('product.store');
+    
 });
 // })->prefix('admin')->name('admin'); // instead of the array passed above
 

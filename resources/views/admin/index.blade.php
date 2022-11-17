@@ -38,8 +38,9 @@
                                 </svg>
                             </div>
                             <div class="content">
-                                <h6 class="mb-10">Stores</h6>
-                                <h3 class="text-bold mb-10" data-kt-countup="true" data-kt-countup-value="34,567">34,567
+                                <h6 class="mb-10">Active Stores</h6>
+                                <h3 class="text-bold mb-10" data-kt-countup="true"
+                                    data-kt-countup-value="{{ $stores_count }}">{{ $stores_count }}
                                 </h3>
                             </div>
                         </div>
@@ -58,7 +59,8 @@
                             </div>
                             <div class="content">
                                 <h6 class="mb-10">Products</h6>
-                                <h3 class="text-bold mb-10" data-kt-countup="true" data-kt-countup-value="74,567">74,567
+                                <h3 class="text-bold mb-10" data-kt-countup="true"
+                                    data-kt-countup-value="{{ $products_count }}">{{ $products_count }}
                                 </h3>
                             </div>
                         </div>
@@ -72,7 +74,9 @@
                             </div>
                             <div class="content">
                                 <h6 class="mb-10">Purchase Transactions</h6>
-                                <h3 class="text-bold mb-10" data-kt-countup="true" data-kt-countup-value="24,567">24,567
+                                <h3 class="text-bold mb-10" data-kt-countup="true"
+                                    data-kt-countup-value="{{ $purchase_transactions_count }}">
+                                    {{ $purchase_transactions_count }}
                                 </h3>
                             </div>
                         </div>
