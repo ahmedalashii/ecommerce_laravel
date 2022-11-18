@@ -61,18 +61,6 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="input-style-1">
-                                        <label for="base_price">Base Price (USD) <b style="color: #d50100">*</b></label>
-                                        <input type="number" placeholder="Base Price" value="{{ $product->base_price }}"
-                                            name="base_price" id="base_price" min="0" />
-                                    </div>
-                                    <div class="input-style-1">
-                                        <label for="discount_price">Discount Price (USD)<b
-                                                style="color: #d50100">*</b></label>
-                                        <input type="number" placeholder="Discount Price"
-                                            value="{{ $product->discount_price }}" name="discount_price" id="discount_price"
-                                            min="0" />
-                                    </div>
                                     <div class="select-style-1">
                                         <label for="store">To which store this product belong? <b
                                                 style="color: #d50100">*</b></label>
@@ -87,9 +75,22 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="input-style-1">
+                                        <label for="base_price">Base Price (USD) <b style="color: #d50100">*</b></label>
+                                        <input type="number" placeholder="Base Price" value="{{ $product->base_price }}"
+                                            name="base_price" id="base_price" min="0" />
+                                    </div>
+                                    <div class="input-style-1">
+                                        <label for="discount_price">Discount Price (USD)<b
+                                                style="color: #d50100">*</b></label>
+                                        <input type="number" placeholder="Discount Price"
+                                            value="{{ $product->discount_price }}" name="discount_price" id="discount_price"
+                                            min="0" />
+                                    </div>
+
 
                                     <div class="form-check form-switch toggle-switch">
-                                        <label class="form-check-label" for="is_discount">Discount Price</label>
+                                        <label class="form-check-label" for="is_discount">is Discount allowed?</label>
                                         <input class="form-check-input" type="checkbox" id="is_discount"
                                             @if ($product->is_discount) checked @endif name="is_discount">
                                     </div>
@@ -98,10 +99,10 @@
                                     <div class="card">
                                         <div class="input-style-1">
                                             <div class="mb-3">
-                                                <label for="product_picture" class="form-label">Product Picture <b
-                                                        style="color: #d50100">*</b></label>
+                                                <label for="product_picture" class="form-label">Product Picture</label>
                                                 <input class="form-control" type="file" id="product_picture"
-                                                    name="product_picture" accept="image/png, image/gif, image/jpeg" />
+                                                    name="product_picture"
+                                                    accept="image/png, image/gif, image/jpeg, image/jpg" />
                                             </div>
                                         </div>
                                     </div>

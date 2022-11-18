@@ -64,7 +64,7 @@
                                                 <label for="logo" class="form-label">Logo <b
                                                         style="color: #d50100">*</b></label>
                                                 <input class="form-control" type="file" id="logo" name="logo"
-                                                    accept="image/png, image/gif, image/jpeg" required />
+                                                    accept="image/png, image/gif, image/jpeg, image/jpg" required />
                                             </div>
                                         </div>
                                     </div>

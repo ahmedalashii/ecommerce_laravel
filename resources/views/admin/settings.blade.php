@@ -8,6 +8,13 @@
 
         <section class="section">
             <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 mt-2">
+                        @foreach ($errors->all() as $message)
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @endforeach
+                    </div>
+                </div>
                 <!-- ========== title-wrapper start ========== -->
                 <div class="title-wrapper pt-30">
                     <div class="row align-items-center">
@@ -44,7 +51,8 @@
                                             <img src="{{ Auth::user()->user_picture }}" alt="No Image!" id="picture_user"
                                                 style="width: 100%; height: 100%;" />
                                             <div class="update-image">
-                                                <input type="file" id="user_picture" name="user_picture" />
+                                                <input type="file" id="user_picture" name="user_picture"
+                                                    accept="image/png, image/gif, image/jpeg" />
                                                 <label for="user_picture"><i class="lni lni-cloud-upload"></i></label>
                                             </div>
                                         </div>
@@ -55,21 +63,21 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="input-style-1">
-                                            <label for="name">Name</label>
+                                            <label for="name">Name <b style="color: #d50100">*</b></label>
                                             <input type="text" placeholder="Name" id="name" name="name"
-                                                value="{{ $user->name }}" />
+                                                value="{{ $user->name }}" required />
                                         </div>
                                     </div>
                                     <div class="input-style-1">
-                                        <label for="email">Email</label>
+                                        <label for="email">Email <b style="color: #d50100">*</b></label>
                                         <input type="email" placeholder="admin@example.com" value="{{ $user->email }}"
-                                            name="email" id="email" />
+                                            name="email" id="email" required />
                                     </div>
                                     <div class="col-12">
                                         <div class="input-style-1">
-                                            <label for="address">Address</label>
+                                            <label for="address">Address <b style="color: #d50100">*</b></label>
                                             <input type="text" placeholder="Address" value="{{ $user->address }}"
-                                                name="address" id="address" />
+                                                name="address" id="address" required />
                                         </div>
                                     </div>
                                     {{-- <div class="input-style-1">
@@ -79,8 +87,8 @@
                                     </div> --}}
 
                                     <div class="input-style-1">
-                                        <label for="about_me">About Me</label>
-                                        <textarea placeholder="Write your bio here" rows="4" id="about_me" name="about_me">{{ $user->description }}</textarea>
+                                        <label for="about_me">About Me <b style="color: #d50100">*</b></label>
+                                        <textarea placeholder="Write your bio here" rows="4" id="about_me" name="about_me" required>{{ $user->description }}</textarea>
                                     </div>
                                     <div class="col-12">
                                         <button class="main-btn primary-btn btn-hover" type="submit">

@@ -53,10 +53,22 @@
                                     <div class="input-style-1">
                                         <label for="description">Description <b style="color: #d50100">*</b></label>
                                         <div class="input-style-3">
-                                            <textarea name="description" id="description" rows="5" placeholder="Enter Product's Description Here"  ></textarea>
+                                            <textarea name="description" id="description" rows="5" placeholder="Enter Product's Description Here"></textarea>
                                             <span class="icon">
                                                 <i class="lni lni-text-format"></i>
                                             </span>
+                                        </div>
+                                    </div>
+                                    <div class="select-style-1">
+                                        <label for="store">To which store this product belong? <b
+                                                style="color: #d50100">*</b></label>
+                                        <div class="select-position">
+                                            <select id="store" name="store" required>
+                                                <option value="-1">Select store</option>
+                                                @foreach ($stores as $store)
+                                                    <option value="{{ $store->id }}">{{ $store->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="input-style-1">
@@ -69,30 +81,21 @@
                                         <input type="number" placeholder="Discount Price" value="0"
                                             name="discount_price" id="discount_price" min="0" />
                                     </div>
-                                    <div class="select-style-1">
-                                        <label for="store">To which store this product belong? <b style="color: #d50100">*</b></label>
-                                        <div class="select-position">
-                                            <select id="store" name="store" required>
-                                                <option value="-1">Select store</option>
-                                                @foreach ($stores as $store)
-                                                    <option value="{{ $store->id }}">{{ $store->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+
 
                                     <div class="form-check form-switch toggle-switch">
-                                        <label class="form-check-label" for="is_discount">Discount Price</label>
-                                        <input class="form-check-input" type="checkbox" id="is_discount" name="is_discount" >
+                                        <label class="form-check-label" for="is_discount">is Discount allowed?</label>
+                                        <input class="form-check-input" type="checkbox" id="is_discount" name="is_discount">
                                     </div>
-                                    
+
                                     <br>
                                     <div class="card">
                                         <div class="input-style-1">
                                             <div class="mb-3">
-                                                <label for="product_picture" class="form-label">Product Picture <b style="color: #d50100">*</b></label>
+                                                <label for="product_picture" class="form-label">Product Picture <b
+                                                        style="color: #d50100">*</b></label>
                                                 <input class="form-control" type="file" id="product_picture"
-                                                    name="product_picture" accept="image/png, image/gif, image/jpeg" />
+                                                    name="product_picture" accept="image/png, image/gif, image/jpeg, image/jpg" />
                                             </div>
                                         </div>
                                     </div>

@@ -28,6 +28,8 @@ Route::fallback(function () {
 });
 
 // Admin Dashboard Routing
+Auth::routes();
+
 Route::get('/', [HomeController::class, 'index'])->middleware('auth')->prefix('admin')->name('admin');
 
 Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
@@ -53,6 +55,3 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
 });
 // })->prefix('admin')->name('admin'); // instead of the array passed above
 
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\User\EditUserRequest;
 use Illuminate\Support\Facades\Storage;
 
 class EditAdminInfoController extends Controller
@@ -15,7 +16,7 @@ class EditAdminInfoController extends Controller
         return view('admin.settings')->with('user', Auth::user());
     }
 
-    public function update(Request $request)
+    public function update(EditUserRequest $request)
     {
         $user = User::find(Auth::user()->id);
         // or
@@ -45,7 +46,7 @@ class EditAdminInfoController extends Controller
         $user->description = $about_me;
         $user->picture = $picture_link;
         // Updating User Info:
-        $user->save();
+        $user->update();
         return redirect()->back()->with(['success' => 'User Updated Successfully', 'type' => 'success']);
     }
 }

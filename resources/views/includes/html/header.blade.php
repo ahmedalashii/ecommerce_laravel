@@ -27,7 +27,7 @@
                                     <h6>{{ Auth::user()->name }}</h6>
                                     <div class="image">
                                         <img src="{{ Auth::user()->user_picture }}"
-                                            alt="" />
+                                            alt="" style="width: 100%; height: 100%;"/>
                                         <span class="status"></span>
                                     </div>
                                 </div>
@@ -35,11 +35,6 @@
                             <i class="lni lni-chevron-down"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
-                            {{-- <li>
-                                <a href="#0">
-                                    <i class="lni lni-user"></i> View Profile
-                                </a>
-                            </li> --}}
                             <li>
                                 <a href="{{ URL('/admin/settings') }}"> <i class="lni lni-pencil"></i> Edit My Info </a>
                             </li>

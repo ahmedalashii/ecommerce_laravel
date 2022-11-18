@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Product;
 
 use App\Models\Store;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequest extends FormRequest
+class EditProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -45,11 +45,11 @@ class ProductRequest extends FormRequest
             'discount_price' => [
                 'required',
                 'numeric',
-                'min:10',
+                'min:5',
                 'regex:/^(([0-9]*)(\.([0-9]+))?)$/',
             ],
             'store' => 'required|numeric|in:' . $store_ids,
-            'product_picture' => 'required|mimes:jpeg,jpg,png'
+            'product_picture' => 'mimes:jpeg,jpg,png'
         ];
     }
 

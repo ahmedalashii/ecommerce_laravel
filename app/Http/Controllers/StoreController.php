@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Store;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Store\EditStoreRequest;
+use App\Http\Requests\Store\CreateStoreRequest;
 
 class StoreController extends Controller
 {
     public function index()
     {
-        $paginate = 3;
+        $paginate = 5;
         $stores = Store::withTrashed()->paginate($paginate);
         return view('admin.store.index')->with('stores', $stores);
     }
@@ -21,7 +22,7 @@ class StoreController extends Controller
         return view('admin.store.create');
     }
 
-    public function store(StoreRequest $request)
+    public function store(CreateStoreRequest $request)
     {
         /*
         1. Getting The File From The Request
@@ -58,18 +59,20 @@ class StoreController extends Controller
         return view('admin.store.edit')->with('store', $store);
     }
 
-    public function update(StoreRequest $request, Store $store)
+    public function update(EditStoreRequest $request, Store $store)
     {
-        // Deleting Old Image Then Replacing it with the new one:
-        Storage::disk('public')->delete($store->logo);
-        $logo = $request->file('logo');
-        $path = 'uploads/images/stores/';
-        $logo_link =  $logo->store($path, ['disk' => 'public']);
-
+        $logo_link = $store->logo;
+        if ($request->hasFile('logo')) {
+            // Deleting Old Image Then Replacing it with the new one:
+            Storage::disk('public')->delete($store->logo);
+            $logo = $request->file('logo');
+            $path = 'uploads/images/stores/';
+            $logo_link =  $logo->store($path, ['disk' => 'public']);
+        }
         // More clean way:
         // $attibutes = $request->validated();
         // $attibutes["logo"] = $logo_link;
-        // $id->update($attibutes);
+        // $store->update($attibutes);
 
         $name = $request->input('name');
         $address = $request->input('address');
@@ -78,7 +81,7 @@ class StoreController extends Controller
         $store->address = $address;
         $store->logo = $logo_link;
         // Updating Store:
-        $store->save();
+        $store->update();
         // with function with redirect creates a session
         return redirect('admin/store/index')->with(['success' => 'Store Updated Successfully', 'type' => 'success']);
     }
@@ -96,7 +99,7 @@ class StoreController extends Controller
         if ($store->productsWithTrashed->isEmpty()) {
             $destroy_status = $store->delete();
         }
-        return redirect()->back()->with([$destroy_status ? 'success' : 'fail' => $destroy_status ? 'Store Deactivated Successfully' : $store->name . ' can\'t be deactivated, since it\'s linked to other products!', 'type' => $destroy_status ? 'success' : 'error']);
+        return redirect()->back()->with([$destroy_status ? 'success' : 'fail' => $destroy_status ? 'Store Deactivated Successfully' : $store->name . ' can\'t be deactivated, because it\'s linked to other products!', 'type' => $destroy_status ? 'success' : 'error']);
     }
 
     public function restore($id)

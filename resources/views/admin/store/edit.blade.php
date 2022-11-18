@@ -53,13 +53,13 @@
                                 <div class="profile-info">
                                     <div class="col-12">
                                         <div class="input-style-1">
-                                            <label for="name">Name</label>
+                                            <label for="name">Name <b style="color: #d50100">*</b></label>
                                             <input type="text" placeholder="Name" id="name" name="name"
                                                 value="{{ $store->name }}" />
                                         </div>
                                     </div>
                                     <div class="input-style-1">
-                                        <label for="address">Address</label>
+                                        <label for="address">Address <b style="color: #d50100">*</b></label>
                                         <input type="text" placeholder="Address" value="{{ $store->address }}"
                                             name="address" id="address" />
                                     </div>
@@ -67,9 +67,8 @@
                                         <div class="input-style-1">
                                             <div class="mb-3">
                                                 <label for="logo" class="form-label">Logo</label>
-                                                <input class="form-control" type="file" id="logo" name="logo" />
-                                                <input class="form-control" type="hidden" id="old_logo" name="old_logo"
-                                                    value="{{ $store->logo }}" />
+                                                <input class="form-control" type="file" id="logo" name="logo"
+                                                    accept="image/png, image/gif, image/jpeg, image/jpg" />
                                             </div>
                                         </div>
                                     </div>

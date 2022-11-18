@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\Product\CreateProductRequest;
+use App\Http\Requests\Product\EditProductRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -23,7 +24,7 @@ class ProductController extends Controller
         return view('admin.product.create')->with('stores', $stores);
     }
 
-    public function store(ProductRequest $request)
+    public function store(CreateProductRequest $request)
     {
         $name = $request->input('name');
         $description = $request->input('description');
@@ -59,19 +60,21 @@ class ProductController extends Controller
         return view('admin.product.edit')->with('product', $product)->with('stores', $stores);
     }
 
-    public function update(ProductRequest $request, Product $product)
+    public function update(EditProductRequest $request, Product $product)
     {
-        // Deleting Old Image Then Replacing it with the new one:
-        Storage::disk('public')->delete($product->picture);
-        $product_picture = $request->file('product_picture');
 
-        $store_id = $request->input('store');
-        $store = Store::find($store_id);
+        $picture_link = $product->picture;
+        if ($request->hasFile('product_picture')) {
+            // Deleting Old Image Then Replacing it with the new one:
+            Storage::disk('public')->delete($product->picture);
+            $product_picture = $request->file('product_picture');
 
-        $path = 'uploads/images/products/' . $store->name . "/";
-        $picture_link =  $product_picture->store($path, ['disk' => 'public']);
+            $store_id = $request->input('store');
+            $store = Store::find($store_id);
 
-
+            $path = 'uploads/images/products/' . $store->name . "/";
+            $picture_link =  $product_picture->store($path, ['disk' => 'public']);
+        }
 
         $name = $request->input('name');
         $description = $request->input('description');
