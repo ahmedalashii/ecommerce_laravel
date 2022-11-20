@@ -36,7 +36,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                             <li>
-                                <a href="{{ URL('/admin/settings') }}"> <i class="lni lni-pencil"></i> Edit My Info </a>
+                                <a href="{{ route('admin.settings') }}"> <i class="lni lni-pencil"></i> Edit My Info </a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"

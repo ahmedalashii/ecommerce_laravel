@@ -20,38 +20,32 @@ use App\Http\Controllers\ProductController;
 
 
 // 404 Error page
-Route::get('404', function () {
-    return view("errors.404");
-});
-Route::fallback(function () {
-    return redirect('404');
-});
 
-// Admin Dashboard Routing
+
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->middleware('auth')->prefix('admin')->name('admin');
+Route::redirect('/', '/admin');
 
-Route::group(['prefix' => 'admin/', 'as' => 'admin.'], function () {
-    Route::get('/settings', [EditAdminInfoController::class, 'index'])->middleware('auth')->name('settings');
-    Route::post('/edit/info/{id}', [EditAdminInfoController::class, 'update'])->middleware('auth')->name('edit.info');
+Route::get('/admin', [HomeController::class, 'index'])->name('admin');
+// Admin Dashboard Routing
+Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], function () {
+    Route::get('/settings', [EditAdminInfoController::class, 'index'])->name('settings');
+    Route::post('/edit/info/{id}', [EditAdminInfoController::class, 'update'])->name('edit.info');
     // Store:
-    Route::get('/store/index', [StoreController::class, 'index'])->middleware('auth')->name('store.index');
-    Route::get('/store/add', [StoreController::class, 'create'])->middleware('auth')->name('store.add');
-    Route::post('/store/store', [StoreController::class, 'store'])->middleware('auth')->name('store.store');
-    Route::get('/store/edit/{store}', [StoreController::class, 'edit'])->middleware('auth')->name('store.edit');
-    Route::post('/store/update/{store}', [StoreController::class, 'update'])->middleware('auth')->name('store.update');
-    Route::post('/store/destroy/{store}', [StoreController::class, 'destroy'])->middleware('auth')->name('store.destroy');
-    Route::post('/store/restore/{id}', [StoreController::class, 'restore'])->middleware('auth')->name('store.restore');
+    Route::get('/store/index', [StoreController::class, 'index'])->name('store.index');
+    Route::get('/store/add', [StoreController::class, 'create'])->name('store.add');
+    Route::post('/store/store', [StoreController::class, 'store'])->name('store.store');
+    Route::get('/store/edit/{store}', [StoreController::class, 'edit'])->name('store.edit');
+    Route::post('/store/update/{store}', [StoreController::class, 'update'])->name('store.update');
+    Route::post('/store/destroy/{store}', [StoreController::class, 'destroy'])->name('store.destroy');
+    Route::post('/store/restore/{id}', [StoreController::class, 'restore'])->name('store.restore');
 
     // Product:
-    Route::get('/product/index', [ProductController::class, 'index'])->middleware('auth')->name('product.index');
-    Route::get('/product/add', [ProductController::class, 'create'])->middleware('auth')->name('product.add');
-    Route::post('/product/store', [ProductController::class, 'store'])->middleware('auth')->name('product.store');
-    Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->middleware('auth')->name('product.edit');
-    Route::post('/product/update/{product}', [ProductController::class, 'update'])->middleware('auth')->name('product.update');
-    Route::post('/product/destroy/{product}', [ProductController::class, 'destroy'])->middleware('auth')->name('product.destroy');
-    Route::post('/product/restore/{id}', [ProductController::class, 'restore'])->middleware('auth')->name('product.restore');
+    Route::get('/product/index', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/product/add', [ProductController::class, 'create'])->name('product.add');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::post('/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
+    Route::post('/product/destroy/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::post('/product/restore/{id}', [ProductController::class, 'restore'])->name('product.restore');
 });
-// })->prefix('admin')->name('admin'); // instead of the array passed above
-

@@ -84,7 +84,7 @@ class ProductController extends Controller
         $store_id = $request->input('store');
         $store = Store::find($store_id);
 
-        $is_discount = $request->has('is_discount');
+        $is_discount = $request->has('is_discount'); // if checked >> on >> true , otherwise >> off >> null >> false
 
         $path = 'uploads/images/products/' . $store->name . "/";
 
