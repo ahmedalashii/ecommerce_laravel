@@ -41,4 +41,50 @@
                 URL.revokeObjectURL(output.src) // free memory
             }
         });
+
+        $('#deactivateForm').on('click', function(event) {
+            // the default action of the event will not be triggered. >> or we can change the type from submit to be a normal button
+            event
+                .preventDefault();
+            var form = $(this).parents('form');
+            Swal.fire({
+                title: 'Do you want to deactivate it?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                    actions: 'my-actions',
+                    confirmButton: 'order-2',
+                    denyButton: 'order-3',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+
+        $('#logoutForm').on('click', function(event) {
+            // the default action of the event will not be triggered. >> or we can change the type from submit to be a normal button
+            event
+                .preventDefault();
+            var form = $(this).siblings('form'); // array of sibling elements
+            Swal.fire({
+                title: 'Do you want to really logout?',
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                    actions: 'my-actions',
+                    confirmButton: 'order-2',
+                    denyButton: 'order-3',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form[0].submit(); // only the first sibling
+                }
+            });
+        });
     </script>

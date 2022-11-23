@@ -116,7 +116,7 @@
                                                                 Edit
                                                             </button>
                                                         @else
-                                                            <form action="{{ route('admin.product.edit' , $product->id) }}"
+                                                            <form action="{{ route('admin.product.edit', $product->id) }}"
                                                                 method="GET">
                                                                 @csrf
                                                                 <button class="main-btn dark-btn rounded-full btn-hover"
@@ -129,7 +129,7 @@
                                                     <td>
                                                         @if ($product->trashed())
                                                             <form
-                                                                action="{{ route('admin.product.restore' , $product->id) }}"
+                                                                action="{{ route('admin.product.restore', $product->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <button class="main-btn success-btn rounded-full btn-hover"
@@ -139,11 +139,12 @@
                                                             </form>
                                                         @else
                                                             <form
-                                                                action="{{ route('admin.product.destroy' , $product->id) }}"
+                                                                action="{{ route('admin.product.destroy', $product->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <button class="main-btn danger-btn rounded-full btn-hover"
-                                                                    type="submit" style="width: 100px; padding: 11px;">
+                                                                    type="submit" style="width: 100px; padding: 11px;"
+                                                                    id="deactivateForm">
                                                                     Deactivate
                                                                 </button>
                                                             </form>

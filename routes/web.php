@@ -18,10 +18,6 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-
-// 404 Error page
-
-
 Auth::routes();
 
 Route::redirect('/', '/admin');

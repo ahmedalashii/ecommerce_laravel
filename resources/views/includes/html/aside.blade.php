@@ -2,7 +2,7 @@
   <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
           <a href="{{ route('admin') }}">
-              <img src="{{ asset('admin-panel/images/logo.svg') }}" alt="logo" height="120" width="180" />
+              <img src="{{ asset('admin-panel/images/logo.svg') }}" alt="logo" height="130" width="150" />
           </a>
       </div>
       <nav class="sidebar-nav">
@@ -89,4 +89,3 @@
           </ul>
       </nav>
   </aside>
-  

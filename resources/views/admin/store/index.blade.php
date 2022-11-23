@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-
+        
         <section class="section">
             <div class="container-fluid">
                 <div class="row">
@@ -111,7 +111,7 @@
                                                                 method="POST">
                                                                 @csrf
                                                                 <button class="main-btn danger-btn rounded-full btn-hover"
-                                                                    type="submit" style="width: 100px; padding: 11px;">
+                                                                    type="submit" style="width: 100px; padding: 11px;" id="deactivateForm">
                                                                     Deactivate
                                                                 </button>
                                                             </form>

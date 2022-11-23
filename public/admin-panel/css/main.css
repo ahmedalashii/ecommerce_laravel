@@ -3096,7 +3096,7 @@ only screen and (min-width: 768px) and (max-width: 991px),
 .sidebar-nav-wrapper .navbar-logo {
   text-align: center;
   padding: 0 25px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .sidebar-nav-wrapper .sidebar-nav .divider {
@@ -5904,4 +5904,24 @@ form .form-label.is-invalid {
 .was-validated .input-group .form-select:invalid,
 .input-group .form-select.is-invalid {
   z-index: 3;
+}
+
+.my-actions {
+  margin: 0 2em;
+}
+
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+.order-3 {
+  order: 3;
+}
+
+.right-gap {
+  margin-right: auto;
 }

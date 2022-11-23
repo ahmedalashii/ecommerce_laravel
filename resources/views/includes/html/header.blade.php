@@ -26,8 +26,8 @@
                                 <div class="info">
                                     <h6>{{ Auth::user()->name }}</h6>
                                     <div class="image">
-                                        <img src="{{ Auth::user()->user_picture }}"
-                                            alt="" style="width: 100%; height: 100%;"/>
+                                        <img src="{{ Auth::user()->user_picture }}" alt=""
+                                            style="width: 100%; height: 100%;" />
                                         <span class="status"></span>
                                     </div>
                                 </div>
@@ -36,12 +36,11 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                             <li>
-                                <a href="{{ route('admin.settings') }}"> <i class="lni lni-pencil"></i> Edit My Info </a>
+                                <a href="{{ route('admin.settings') }}"> <i class="lni lni-pencil"></i> Edit My Info
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
+                                <a href="{{ route('logout') }}" id="logoutForm">
                                     <i class="lni lni-exit"></i> Sign Out </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
