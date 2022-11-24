@@ -153,9 +153,6 @@
     /*------------------
 		Magnific
 	--------------------*/
-    $('.video-popup').magnificPopup({
-        type: 'iframe'
-    });
 
     /*-------------------
 		Quantity change

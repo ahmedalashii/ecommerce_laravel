@@ -8,3 +8,12 @@
 <script src="{{ asset('public_site/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('public_site/js/main.js') }}"></script>
 
+<script>
+    $(".header__menu").find('ul li a').each(function($index, $element) {
+        if (window.location.href == $($element).attr('href')) {
+            $($element).parents('li').addClass("active");
+        } else {
+            $($element).parents('li').removeClass("active");
+        }
+    });
+</script>

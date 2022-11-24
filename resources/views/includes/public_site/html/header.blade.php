@@ -11,8 +11,8 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Stores</a></li>
+                            <li class="active"><a href="{{ route('public') }}">Home</a></li>
+                            <li><a href="{{ route('public.stores') }}">Stores</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>

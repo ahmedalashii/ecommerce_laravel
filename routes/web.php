@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\EditAdminInfoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PublicSite\PublicController;
+use App\Http\Controllers\PublicSite\StoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,8 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], f
     Route::post('/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::post('/product/destroy/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::post('/product/restore/{id}', [ProductController::class, 'restore'])->name('product.restore');
+
+    // Note: We can shorten some of these lines above by using resource :) 
 });
 
 // Public Site Routing
@@ -54,5 +57,5 @@ Route::redirect('/', '/public');
 Route::get('/public', [PublicController::class, 'index'])->name('public');
 
 Route::group(['prefix' => 'public/', 'as' => 'public.'], function () {
-    
+    Route::get('/stores', [StoresController::class, 'index'])->name('stores');
 });
