@@ -10,7 +10,7 @@ class PublicController extends Controller
 {
     public function index()
     {
-        $stores = Store::all()->take(4);
+        $stores = Store::with('products')->take(4)->get();
         return view('public_site.index')->with('stores', $stores);
     }
 }
