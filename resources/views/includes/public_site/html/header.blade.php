@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3" style="padding: 0px 0px !important; text-align:center;">
-                    <a href="#"><img src="{{ $site_settings->site_logo }}" alt="No Logo provided!"></a>
+                    <a href="{{ route('public') }}"><img src="{{ $site_settings->site_logo }}" alt="No Logo provided!"></a>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">

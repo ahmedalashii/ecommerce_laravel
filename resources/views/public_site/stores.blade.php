@@ -38,18 +38,18 @@
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg img-thumbnail"
                                         data-setbg="{{ $store->logo_image }}"
-                                        style="background-image: url(&quot;{{ $store->logo_image }}&quot;);   background-size: auto;                            ">
+                                        style="background-image: url(&quot;{{ $store->logo_image }}&quot;);   background-size: auto;:"                           ">
                                     </div>
                                     <div class="product__item__text">
                                         <h6 style="font-weight: 700; font-size: 18px;">{{ $store->name }}</h6>
-                                        <a href="#" class="add-cart">Shop Now</a>
+                                        <a href="{{ route('public.products', $store->id, 5) }}" class="add-cart">Shop Now</a>
                                         <h5 style="font-weight: 500; font-size: 14px;">{{ $store->address }}</h5>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                    <div @if($stores->hasPages()) class="d-flex justify-content-center mt-3" @endif>
+                    <div @if ($stores->hasPages()) class="d-flex justify-content-center mt-3" @endif>
                         {{ $stores->links() }}
                     </div>
                     {{-- Custom Pagination if we want --}}

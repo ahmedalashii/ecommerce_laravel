@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
-use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\EditAdminInfoController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\PublicSite\PublicController;
 use App\Http\Controllers\PublicSite\StoresController;
+use App\Http\Controllers\Admin\EditAdminInfoController;
+use App\Http\Controllers\PublicSite\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,4 +59,6 @@ Route::get('/public', [PublicController::class, 'index'])->name('public');
 
 Route::group(['prefix' => 'public/', 'as' => 'public.'], function () {
     Route::get('/stores', [StoresController::class, 'index'])->name('stores');
+    Route::get('/products/{store}/{start_price?}/{end_price?}/{search_value?}', [ProductsController::class, 'index'])->name('products');
+    Route::get('/products/{store}/sort', [ProductsController::class, 'index'])->name('products.sort');
 });

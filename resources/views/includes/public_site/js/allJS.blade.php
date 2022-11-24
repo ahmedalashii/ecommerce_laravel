@@ -16,4 +16,12 @@
             $($element).parents('li').removeClass("active");
         }
     });
+
+    $(".shop__sidebar__price").find('ul li a').each(function($index, $element) {
+        if (window.location.href == $($element).attr('href')) {
+            $($element).css("color", "#111111");
+        } else {
+            $($element).css('color', '#b7b7b7');
+        }
+    });
 </script>

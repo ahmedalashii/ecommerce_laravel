@@ -13,7 +13,8 @@
                                 <h6>The best stores you will ever find!</h6>
                                 <h2>UMBRELLA STORES</h2>
                                 <p>{{ $site_settings->description }}</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <a href="{{ route('public.stores') }}" class="primary-btn">Shop now <span
+                                        class="arrow_right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -28,7 +29,8 @@
                                 <h6>The best stores you will ever find!</h6>
                                 <h2>UMBRELLA STORES</h2>
                                 <p>{{ $site_settings->description }}</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <a href="{{ route('public.stores') }}" class="primary-btn">Shop now <span
+                                        class="arrow_right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -56,7 +58,7 @@
                         </div>
                         <div class="product__item__text">
                             <h6 style="font-weight: 700; font-size: 18px;">{{ $store->name }}</h6>
-                            <a href="#" class="add-cart">Shop Now</a>
+                            <a href="{{ route('public.products', $store->id) }}" class="add-cart">Shop Now</a>
                             <h5 style="font-weight: 500; font-size: 14px;">{{ $store->address }}</h5>
                         </div>
                     </div>
