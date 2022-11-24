@@ -6,6 +6,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\EditAdminInfoController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PublicSite\PublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +19,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+// Authentication routing:
 Auth::routes();
 
-Route::redirect('/', '/admin');
-
-Route::get('/admin', [HomeController::class, 'index'])->name('admin');
 // Admin Dashboard Routing
+Route::get('/admin', [HomeController::class, 'index'])->name('admin');
 Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::get('/site/settings', [HomeController::class, 'edit'])->name('site.settings');
     Route::post('/site/settings', [HomeController::class, 'update']);
@@ -47,4 +47,12 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], f
     Route::post('/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::post('/product/destroy/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::post('/product/restore/{id}', [ProductController::class, 'restore'])->name('product.restore');
+});
+
+// Public Site Routing
+Route::redirect('/', '/public');
+Route::get('/public', [PublicController::class, 'index'])->name('public');
+
+Route::group(['prefix' => 'public/', 'as' => 'public.'], function () {
+    
 });

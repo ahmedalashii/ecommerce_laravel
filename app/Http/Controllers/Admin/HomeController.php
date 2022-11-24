@@ -52,8 +52,8 @@ class HomeController extends Controller
             // Deleting Old Logo Then Replacing it with the new one:
             Storage::disk('public')->delete($dashboard_logo);
             $logo_file = $request->file('dashboard_logo');
-
-            $path = 'uploads/images';
+            
+            $path = 'uploads/images/logos';
             $dashboard_logo =  $logo_file->store($path, ['disk' => 'public']);
         }
 
@@ -63,8 +63,18 @@ class HomeController extends Controller
             Storage::disk('public')->delete($site_logo);
             $logo_file = $request->file('site_logo');
 
-            $path = 'uploads/images';
+            $path = 'uploads/images/logos';
             $site_logo =  $logo_file->store($path, ['disk' => 'public']);
+        }
+
+        $site_light_logo = $settings->public_site_light_logo;
+        if ($request->hasFile('site_light_logo')) {
+            // Deleting Old Logo Then Replacing it with the new one:
+            Storage::disk('public')->delete($site_light_logo);
+            $logo_file = $request->file('site_light_logo');
+
+            $path = 'uploads/images/logos';
+            $site_light_logo =  $logo_file->store($path, ['disk' => 'public']);
         }
 
         $country = $request->input('country');
@@ -78,6 +88,7 @@ class HomeController extends Controller
         // Storing the logo's path in database:
         $settings->dashboard_logo = $dashboard_logo;
         $settings->public_site_logo = $site_logo;
+        $settings->public_site_light_logo = $site_light_logo;
         $settings->update();
         return redirect()->back()->with(['success' => 'Site Settings Updated Successfully', 'type' => 'success']);
     }

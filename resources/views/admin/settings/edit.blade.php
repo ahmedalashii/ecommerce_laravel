@@ -59,6 +59,13 @@
                                             accept="image/png, image/gif, image/jpeg, image/jpg, image/svg+xml" />
                                     </div>
                                 </div>
+                                <div class="card">
+                                    <div class="input-style-1">
+                                        <label for="site_light_logo" class="form-label">Public Site Light Logo</label>
+                                        <input class="form-control" type="file" id="site_light_logo" name="site_light_logo"
+                                            accept="image/png, image/gif, image/jpeg, image/jpg, image/svg+xml" />
+                                    </div>
+                                </div>
                                 <div class="profile-info">
                                     <div class="col-12">
                                         <div class="input-style-1">

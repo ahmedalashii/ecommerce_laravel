@@ -17,6 +17,7 @@ class CreateSiteSettingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('dashboard_logo')->nullable();
             $table->string('public_site_logo')->nullable();
+            $table->string('public_site_light_logo')->nullable();
             $table->string('description')->nullable();
             $table->string('country')->nullable();
             $table->string('address')->nullable();
