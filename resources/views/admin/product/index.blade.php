@@ -142,9 +142,8 @@
                                                                 action="{{ route('admin.product.destroy', $product->id) }}"
                                                                 method="POST">
                                                                 @csrf
-                                                                <button class="main-btn danger-btn rounded-full btn-hover"
-                                                                    type="submit" style="width: 100px; padding: 11px;"
-                                                                    id="deactivateForm">
+                                                                <button class="main-btn danger-btn rounded-full btn-hover deactivateForm"
+                                                                    type="submit" style="width: 100px; padding: 11px;">
                                                                     Deactivate
                                                                 </button>
                                                             </form>

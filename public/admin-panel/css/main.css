@@ -5925,3 +5925,8 @@ form .form-label.is-invalid {
 .right-gap {
   margin-right: auto;
 }
+
+.swal-wide{
+  width: 400px !important;
+  height: 180px !important;
+}

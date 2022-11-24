@@ -40,7 +40,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('logout') }}" id="logoutForm">
+                                <a href="{{ route('logout') }}" class="logoutForm">
                                     <i class="lni lni-exit"></i> Sign Out </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">

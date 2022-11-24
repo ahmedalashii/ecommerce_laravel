@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         $paginate = 5;
-        $products = Product::withTrashed()->paginate($paginate);
+        $products = Product::withTrashed()->with('store:id,name')->paginate($paginate); // only the name and id to be got
         return view('admin.product.index')->with('products', $products);
     }
 
