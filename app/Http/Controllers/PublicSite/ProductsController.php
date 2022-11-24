@@ -36,4 +36,8 @@ class ProductsController extends Controller
         }
         return view('public_site.products')->with('products', $products)->with('store', $store)->with('per_page', $per_page)->with('sort_way', $sort_way ?? null);
     }
+
+    public function search(){
+        
+    }
 }

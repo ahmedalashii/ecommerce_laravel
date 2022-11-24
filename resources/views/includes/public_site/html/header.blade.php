@@ -16,13 +16,13 @@
                         </ul>
                     </nav>
                 </div>
-                {{-- <div class="col-lg-3 col-md-3">
+                <div class="col-lg-1 col-md-3">
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img
                                 src="{{ asset('public_site/images/icons/search.png') }}" alt=""></a>
                     </div>
-                </div> --}}
-                <div class="col-lg-3 col-md-3">
+                </div>
+                <div class="col-lg-2 col-md-3">
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li>
