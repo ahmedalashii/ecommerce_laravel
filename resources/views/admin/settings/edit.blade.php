@@ -21,7 +21,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="titlemb-30">
-                                <h2>Add New Store</h2>
+                                <h2>Edit Site Settings</h2>
                             </div>
                         </div>
                         <!-- end col -->
@@ -41,36 +41,50 @@
                         justify-content-between
                         align-items-center
                       ">
-                                <h6>Store Info</h6>
+                                <h6>Site Settings</h6>
                             </div>
-                            <form action="{{ route('admin.store.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.site.settings') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                <div class="card">
+                                    <div class="input-style-1">
+                                        <label for="dashboard_logo" class="form-label">Dashboard Logo</label>
+                                        <input class="form-control" type="file" id="dashboard_logo" name="dashboard_logo"
+                                            accept="image/png, image/gif, image/jpeg, image/jpg, image/svg+xml" />
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="input-style-1">
+                                        <label for="site_logo" class="form-label">Public Site Logo</label>
+                                        <input class="form-control" type="file" id="site_logo" name="site_logo"
+                                            accept="image/png, image/gif, image/jpeg, image/jpg, image/svg+xml" />
+                                    </div>
+                                </div>
                                 <div class="profile-info">
                                     <div class="col-12">
                                         <div class="input-style-1">
-                                            <label for="name">Name <b style="color: #d50100">*</b></label>
-                                            <input type="text" placeholder="Name" id="name" name="name"
-                                                value="" required />
+                                            <label for="country">Country <b style="color: #d50100">*</b></label>
+                                            <input type="text" placeholder="Country" id="country" name="country"
+                                                value=" {{ $settings->country }} " required />
                                         </div>
                                     </div>
                                     <div class="input-style-1">
                                         <label for="address">Address <b style="color: #d50100">*</b></label>
-                                        <input type="text" placeholder="Address" value="" name="address"
-                                            id="address" required />
+                                        <input type="text" placeholder="Address" name="address" id="address" required
+                                            value="{{ $settings->address }}" />
                                     </div>
-                                    <div class="card">
-                                        <div class="input-style-1">
-                                            <div class="mb-3">
-                                                <label for="logo" class="form-label">Logo <b
-                                                        style="color: #d50100">*</b></label>
-                                                <input class="form-control" type="file" id="logo" name="logo"
-                                                    accept="image/png, image/gif, image/jpeg, image/jpg" required />
-                                            </div>
+
+                                    <div class="input-style-1">
+                                        <label for="description">Description <b style="color: #d50100">*</b></label>
+                                        <div class="input-style-3">
+                                            <textarea name="description" id="description" rows="5" placeholder="Enter Site's Description Here">{{ $settings->description }}</textarea>
+                                            <span class="icon">
+                                                <i class="lni lni-text-format"></i>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <button class="main-btn primary-btn btn-hover" type="submit">
-                                            Add Store
+                                            Update Settings
                                         </button>
                                     </div>
                                 </div>

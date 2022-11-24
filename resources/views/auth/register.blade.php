@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
-    @include('includes.css.allStyles')
+    @include('includes.admin.css.allStyles')
 
 </head>
 
@@ -34,7 +34,7 @@
                             <div class="title text-center">
                                 <h1 class="text-primary mb-10">Getting Started</h1>
                                 <p class="text-medium">
-                                    Enter your information to register in <strong>OSHOP</strong>
+                                    Enter your information to register in <strong>UMBRELLA</strong>
                                     <br class="d-sm-block" />
                                     to manage stores, and products.
                                 </p>
@@ -144,7 +144,7 @@
             <!-- end row -->
         </div>
     </section>
-    @include('includes.js.allJS')
+    @include('includes.admin.js.allJS')
 
 </body>
 

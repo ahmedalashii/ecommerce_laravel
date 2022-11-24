@@ -304,7 +304,7 @@
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
       <!-- ========== header start ========== -->
-      @include('includes.html.header')
+      @include('includes.admin.html.header')
       <!-- ========== header end ========== -->
 
       <!-- ========== table components start ========== -->

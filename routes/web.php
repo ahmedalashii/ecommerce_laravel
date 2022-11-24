@@ -25,6 +25,9 @@ Route::redirect('/', '/admin');
 Route::get('/admin', [HomeController::class, 'index'])->name('admin');
 // Admin Dashboard Routing
 Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], function () {
+    Route::get('/site/settings', [HomeController::class, 'edit'])->name('site.settings');
+    Route::post('/site/settings', [HomeController::class, 'update']);
+
     Route::get('/settings', [EditAdminInfoController::class, 'index'])->name('settings');
     Route::post('/edit/info/{id}', [EditAdminInfoController::class, 'update'])->name('edit.info');
     // Store:

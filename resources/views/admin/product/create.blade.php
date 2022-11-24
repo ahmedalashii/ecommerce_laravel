@@ -1,9 +1,9 @@
-@extends('layouts.mainLayout')
+@extends('layouts.admin.MainLayout')
 
 @section('MainContent')
     <main class="main-wrapper">
         <!-- ========== header start ========== -->
-        @include('includes.html.header')
+        @include('includes.admin.html.header')
         <!-- ========== header end ========== -->
 
         <section class="section">

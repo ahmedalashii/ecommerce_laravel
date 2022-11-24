@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body class="unselectable">
 
     <div id="notfound">
         <div class="notfound">

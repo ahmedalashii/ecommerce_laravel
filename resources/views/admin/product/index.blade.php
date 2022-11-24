@@ -1,8 +1,8 @@
-@extends('layouts.mainLayout')
+@extends('layouts.admin.MainLayout')
 
 @section('MainContent')
     <main class="main-wrapper">
-        @include('includes.html.header')
+        @include('includes.admin.html.header')
 
         <div class="title-wrapper pt-20 pl-30">
             <div class="row align-items-center">

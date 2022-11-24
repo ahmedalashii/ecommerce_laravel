@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    @include('includes.css.allStyles')
+    @include('includes.admin.css.allStyles')
 
 </head>
 
@@ -50,7 +50,7 @@
                 <div class="col-lg-6">
                     <div class="signin-wrapper">
                         <div class="form-wrapper">
-                            <h6 class="mb-15">Login to <strong>OSHOP</strong></h6>
+                            <h6 class="mb-15">Login to <strong>UMBRELLA</strong></h6>
                             <p class="text-sm mb-25">
                                 Enter email and password to login.
                             </p>
@@ -142,7 +142,7 @@
             <!-- end row -->
         </div>
     </section>
-    @include('includes.js.allJS')
+    @include('includes.admin.js.allJS')
 
 </body>
 

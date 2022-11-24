@@ -86,9 +86,6 @@ class ProductController extends Controller
 
         $is_discount = $request->has('is_discount'); // if checked >> on >> true , otherwise >> off >> null >> false
 
-        $path = 'uploads/images/products/' . $store->name . "/";
-
-
         $product->name = $name;
         $product->description = $description;
         $product->base_price = $base_price;

@@ -1,9 +1,9 @@
-@extends('layouts.mainLayout')
+@extends('layouts.admin.MainLayout')
 
 @section('MainContent')
     <main class="main-wrapper">
         <!-- ========== header start ========== -->
-        @include('includes.html.header')
+        @include('includes.admin.html.header')
         <!-- ========== header end ========== -->
 
         <section class="section">
@@ -102,7 +102,7 @@
                                                 <label for="product_picture" class="form-label">Product Picture</label>
                                                 <input class="form-control" type="file" id="product_picture"
                                                     name="product_picture"
-                                                    accept="image/png, image/gif, image/jpeg, image/jpg" />
+                                                    accept="image/png, image/gif, image/jpeg, image/jpg, image/svg" />
                                             </div>
                                         </div>
                                     </div>
