@@ -78,13 +78,29 @@
                       </li>
                   </ul>
               </li>
-              <li class="nav-item">
-                  <a href="{{ route('admin') }}">
+              <li class="nav-item nav-item-has-children">
+                  {{-- <a href="{{ route('admin.purchase_transaction.index') }}">
+                    <span class="icon-not-filled">
+                        <i class="lni lni-credit-cards" style="font-size: 23px;"></i>
+                    </span>
+                    <span class="text">Purchase Transactions</span>
+                </a> --}}
+
+                  <a href="#" class="collapsed" data-bs-toggle="collapse" data-bs-target="#purchase_transactions"
+                      aria-controls="purchase_transactions" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="icon-not-filled">
                           <i class="lni lni-credit-cards" style="font-size: 23px;"></i>
                       </span>
                       <span class="text">Purchase Transactions</span>
                   </a>
+                  <ul id="purchase_transactions" class="collapse dropdown-nav">
+                      <li>
+                          <a href="{{ route('admin.purchase_transaction.index') }}">List of all Transactions</a>
+                      </li>
+                      <li>
+                          <a href="{{ route('admin.purchase_transaction.report') }}">Total Report</a>
+                      </li>
+                  </ul>
               </li>
               <li class="nav-item">
                   <a href="{{ route('admin.site.settings') }}">

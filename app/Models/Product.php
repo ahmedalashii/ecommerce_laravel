@@ -20,6 +20,11 @@ class Product extends Model
         return asset("storage/$this->picture");
     }
 
+    public function purchase_transactions()
+    {
+        return $this->hasMany(PurchaseTransaction::class);
+    }
+
     // Product M-1 Store
     // Every product belongs to one store, and every store has many products
     public function store()

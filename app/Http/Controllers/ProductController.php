@@ -62,7 +62,6 @@ class ProductController extends Controller
 
     public function update(EditProductRequest $request, Product $product)
     {
-
         $picture_link = $product->picture;
         if ($request->hasFile('product_picture')) {
             // Deleting Old Image Then Replacing it with the new one:

@@ -7,3 +7,4 @@
 <link rel="stylesheet" href="{{ asset('public_site/css/owl.carousel.min.css') }} " type="text/css">
 <link rel="stylesheet" href="{{ asset('public_site/css/slicknav.min.css') }} " type="text/css">
 <link rel="stylesheet" href="{{ asset('public_site/css/style.css') }} " type="text/css">
+<link rel="stylesheet" href="{{ asset('public_site/plugins/plugins.bundle.css') }}" />

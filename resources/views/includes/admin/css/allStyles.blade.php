@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="{{ asset('admin-panel/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin-panel/css/lineicons.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin-panel/css/main.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin-panel/plugins/plugins.bundle.css') }}" />
+<link rel="stylesheet" href="{{ asset('admin-panel/plugins/plugins.bundle.css') }}" />
     <style>
         .swal2-styled.swal2-confirm {
             border: 0;

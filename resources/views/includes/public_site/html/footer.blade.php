@@ -29,7 +29,6 @@
                     <h6>Shopping</h6>
                     <ul>
                         <li><a href="{{ route('public.stores') }}">Stores</a></li>
-                        <li><a href="">Trending Shoes</a></li>
                     </ul>
                 </div>
             </div>

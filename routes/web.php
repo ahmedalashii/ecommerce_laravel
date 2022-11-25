@@ -8,7 +8,10 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\PublicSite\PublicController;
 use App\Http\Controllers\PublicSite\StoresController;
 use App\Http\Controllers\Admin\EditAdminInfoController;
+use App\Http\Controllers\PublicSite\ProductCheckoutController;
 use App\Http\Controllers\PublicSite\ProductsController;
+use App\Http\Controllers\PurchaseTransactionController;
+use App\Models\PurchaseTransaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +53,11 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], f
     Route::post('/product/destroy/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::post('/product/restore/{id}', [ProductController::class, 'restore'])->name('product.restore');
 
-    // Note: We can shorten some of these lines above by using resource :) 
+    // Purchase Transactions:
+    Route::get('/purchase_transaction/index', [PurchaseTransactionController::class, 'index'])->name('purchase_transaction.index');
+    Route::get('/purchase_transaction/report', [PurchaseTransactionController::class, 'report'])->name('purchase_transaction.report');
+
+    // Note: We can shorten some or most of these lines above by using resource :) 
 });
 
 // Public Site Routing
@@ -65,4 +72,6 @@ Route::group(['prefix' => 'public/', 'as' => 'public.'], function () {
     Route::get('/products/{store}/{start_price?}/{end_price?}/{search_value?}', [ProductsController::class, 'index'])->name('products');
     // Sorting based on the discount price
     Route::get('/products/{store}/sort', [ProductsController::class, 'index'])->name('products.sort');
+    Route::get('/product/{product}/order', [ProductCheckoutController::class, 'index'])->name('product.order');
+    Route::post('/product/{product}/checkout', [ProductCheckoutController::class, 'checkout'])->name('product.checkout');
 });

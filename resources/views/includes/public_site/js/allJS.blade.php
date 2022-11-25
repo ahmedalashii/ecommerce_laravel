@@ -7,8 +7,28 @@
 <script src="{{ asset('public_site/js/mixitup.min.js') }}"></script>
 <script src="{{ asset('public_site/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('public_site/js/main.js') }}"></script>
+<script src="{{ asset('public_site/plugins/plugins.bundle.js') }}"></script>
 
 <script>
+    @if (session('success'))
+        Swal.fire({
+            title: "{{ session('success') }}",
+            toast: true,
+            showConfirmButton: false,
+            position: "bottom-end",
+            icon: "{{ session('type') }}",
+        });
+    @elseif (session('fail'))
+        Swal.fire({
+            title: "{{ session('fail') }}",
+            toast: true,
+            showConfirmButton: false,
+            position: "bottom-end",
+            icon: "{{ session('type') }}",
+        });
+    @endif
+
+
     $(".header__menu").find('ul li a').each(function($index, $element) {
         if (window.location.href == $($element).attr('href')) {
             $($element).parents('li').addClass("active");

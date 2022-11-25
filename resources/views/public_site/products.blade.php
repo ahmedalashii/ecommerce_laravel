@@ -122,7 +122,9 @@
                                         </div>
                                         <div class="product__item__text">
                                             <h6>{{ $product->name }}</h6>
-                                            <a href="#" class="add-cart">Purchase Checkout</a>
+                                            <a href="{{ route('public.product.order', ['product' => $product->id]) }}"
+                                                class="add-cart">Purchase
+                                                Product</a>
                                             @if ($product->is_discount)
                                                 <h5>
                                                     ${{ $product->discount_price }} <del
@@ -138,7 +140,7 @@
                         </div>
                     @else
                         <div class="row" style="justify-content: center">
-                            <img src="{{ asset('public_site/images/no_data.png') }}"
+                            <img src="{{ asset('public_site/images/no_products.png') }}"
                                 alt="No Products for this store found!" width="500px" height="470px">
                         </div>
                     @endif

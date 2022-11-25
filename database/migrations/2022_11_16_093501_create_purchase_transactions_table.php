@@ -17,6 +17,9 @@ class CreatePurchaseTransactionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('address');
+            $table->string('phone');
+            $table->string('email');
+            $table->float('purchase_price')->unsigned(true);
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
