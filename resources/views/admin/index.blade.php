@@ -72,8 +72,7 @@
                     </div>
                     <!-- End Col -->
                     <div class="col-xl-4 col-lg-3 col-sm-6">
-                        {{-- <a href="{{ route('admin.purchase_transaction.index') }}" style="width: 100%"> --}}
-                        <a href="" style="width: 100%">
+                        <a href="{{ route('admin.purchase_transaction.index') }}" style="width: 100%">
                             <div class="icon-card mb-30">
                                 <div class="icon primary">
                                     <i class="lni lni-credit-cards"></i>
