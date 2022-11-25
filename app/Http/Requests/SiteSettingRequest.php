@@ -23,12 +23,14 @@ class SiteSettingRequest extends FormRequest
      */
     public function rules()
     {
+        $currencies = "$,€,₪";
         return [
             'dashboard_logo' => 'nullable|mimes:jpeg,jpg,png,svg',
             'site_logo' => 'nullable|mimes:jpeg,jpg,png,svg',
-            'country' => 'required|string',   
-            'address' => 'required|string',   
-            'description' => 'required|string',   
+            'country' => 'required|string',
+            'address' => 'required|string',
+            'currency' => 'required|string|in:' . $currencies,
+            'description' => 'required|string',
         ];
     }
 }

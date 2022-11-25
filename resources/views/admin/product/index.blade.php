@@ -93,10 +93,10 @@
                                                         </span>
                                                     </td>
                                                     <td class="min-width">
-                                                        <p>${{ $product->base_price }}</p>
+                                                        <p>{{ $site_settings->currency . $product->base_price }}</p>
                                                     </td>
                                                     <td class="min-width">
-                                                        <p>${{ $product->discount_price }}</p>
+                                                        <p>{{ $site_settings->currency . $product->discount_price }}</p>
                                                     </td>
                                                     <td class="min-width">
                                                         <p>

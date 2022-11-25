@@ -57,7 +57,7 @@
                                                     </td>
 
                                                     <td class="min-width">
-                                                        <p>${{ $product->total_purchases }}</p>
+                                                        <p>{{ $site_settings->currency . $product->total_purchases }}</p>
                                                     </td>
                                                     <td>
                                                         <p>{{ $product->last_purchase }}</p>

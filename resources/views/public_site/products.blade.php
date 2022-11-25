@@ -127,11 +127,11 @@
                                                 Product</a>
                                             @if ($product->is_discount)
                                                 <h5>
-                                                    ${{ $product->discount_price }} <del
-                                                        style="color: #878787; font-size: 12px;">${{ $product->base_price }}</del>
+                                                    {{ $site_settings->currency . $product->discount_price }} <del
+                                                        style="color: #878787; font-size: 12px;">{{ $site_settings->currency . $product->base_price }}</del>
                                                 </h5>
                                             @else
-                                                <h5>${{ $product->base_price }}</h5>
+                                                <h5>{{ $site_settings->currency . $product->base_price }}</h5>
                                             @endif
                                         </div>
                                     </div>

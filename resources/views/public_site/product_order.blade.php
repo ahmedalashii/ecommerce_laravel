@@ -67,16 +67,16 @@
                                 <ul class="checkout__total__products">
                                     <li>{{ $product->name }} <span>
                                             @if ($product->is_discount)
-                                                ${{ $product->discount_price }}
+                                                {{ $site_settings->currency . $product->discount_price }}
                                                 <del
-                                                    style="color: #878787; font-size: 12px;">${{ $product->base_price }}</del>
+                                                    style="color: #878787; font-size: 12px;">{{$site_settings->currency . $product->base_price }}</del>
                                             @else
-                                                ${{ $product->base_price }}
+                                                {{ $site_settings->currency . $product->base_price }}
                                             @endif
                                         </span></li>
                                 </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Total <span>${{ $total }}</span></li>
+                                    <li>Total <span>{{ $site_settings->currency . $total }}</span></li>
                                 </ul>
                                 <button type="submit" class="site-btn">Confirm Purchasing</button>
                             </div>

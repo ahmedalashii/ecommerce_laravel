@@ -62,7 +62,8 @@
                                 <div class="card">
                                     <div class="input-style-1">
                                         <label for="site_light_logo" class="form-label">Public Site Light Logo</label>
-                                        <input class="form-control" type="file" id="site_light_logo" name="site_light_logo"
+                                        <input class="form-control" type="file" id="site_light_logo"
+                                            name="site_light_logo"
                                             accept="image/png, image/gif, image/jpeg, image/jpg, image/svg+xml" />
                                     </div>
                                 </div>
@@ -79,7 +80,19 @@
                                         <input type="text" placeholder="Address" name="address" id="address" required
                                             value="{{ $settings->address }}" />
                                     </div>
-
+                                    <div class="select-style-1">
+                                        <label for="currency">Currency <b
+                                                style="color: #d50100">*</b></label>
+                                        <div class="select-position">
+                                            <select id="currency" name="currency" required>
+                                                <option value="-1">Select Currency</option>
+                                                @foreach ($currencies ?? [] as $currency_key => $currency_value)
+                                                    <option value="{{ $currency_key }}" @if ($settings->currency == $currency_key) selected @endif>{{ $currency_key . " " . $currency_value }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="input-style-1">
                                         <label for="description">Description <b style="color: #d50100">*</b></label>
                                         <div class="input-style-3">

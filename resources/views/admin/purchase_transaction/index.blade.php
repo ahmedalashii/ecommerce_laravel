@@ -82,7 +82,7 @@
                                                         <p>{{ $purchase_transaction->email }}</p>
                                                     </td>
                                                     <td class="min-width">
-                                                        <p>${{ $purchase_transaction->purchase_price }}</p>
+                                                        <p>{{ $site_settings->currency . $purchase_transaction->purchase_price }}</p>
                                                     </td>
                                                     <td class="min-width">
                                                         <p>{{ $purchase_transaction->created_at }}</p>

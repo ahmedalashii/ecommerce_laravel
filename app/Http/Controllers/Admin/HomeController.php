@@ -46,7 +46,8 @@ class HomeController extends Controller
     public function edit()
     {
         $settings = SiteSetting::first();
-        return view('admin.settings.edit')->with('settings', $settings);
+        $currencies = ["$" => "USD", "€" => "EURO", "₪" => "SHEKEL"];
+        return view('admin.settings.edit')->with('settings', $settings)->with('currencies', $currencies);
     }
 
     public function update(SiteSettingRequest $request)
@@ -85,12 +86,14 @@ class HomeController extends Controller
 
         $country = $request->input('country');
         $address = $request->input('address');
+        $currency = $request->input('currency');
         $description = $request->input('description');
 
 
         $settings->country = $country;
         $settings->address = $address;
         $settings->description = $description;
+        $settings->currency = $currency;
         // Storing the logo's path in database:
         $settings->dashboard_logo = $dashboard_logo;
         $settings->public_site_logo = $site_logo;
