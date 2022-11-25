@@ -7,7 +7,7 @@
         <div class="title-wrapper pt-20 pl-30">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <div class="title mb-30">
+                <div class="title mb-30">
                         <h2>Purchase Transactions</h2>
                     </div>
                 </div>

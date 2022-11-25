@@ -6,6 +6,7 @@
     <meta name="description" content="Male_Fashion Template">
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('icon.svg') }}" type="image/x-icon" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UMBRELLA STORES</title>
 

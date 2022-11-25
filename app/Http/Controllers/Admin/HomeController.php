@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\SiteSetting;
 use App\Models\Store;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\SiteSettingRequest;
+use Illuminate\Support\Facades\DB;
 use App\Models\PurchaseTransaction;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\SiteSetting;
+use App\Http\Requests\SiteSettingRequest;
 
 class HomeController extends Controller
 {
@@ -31,10 +32,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Statistics:
         $stores_count = Store::count(); // non-trashed
         $products_count = Product::count();
         $purchase_transactions_count = PurchaseTransaction::count();
-        return view('admin.index')->with('stores_count', $stores_count)->with('products_count', $products_count)->with('purchase_transactions_count', $purchase_transactions_count);
+
+        $last_transactions = PurchaseTransaction::withTrashed()->with(['product', 'product.store'])->take(6)->get();
+
+        // we can use compact
+        return view('admin.index')->with('stores_count', $stores_count)->with('products_count', $products_count)->with('purchase_transactions_count', $purchase_transactions_count)->with('last_transactions', $last_transactions);
     }
 
     public function edit()
@@ -46,13 +52,13 @@ class HomeController extends Controller
     public function update(SiteSettingRequest $request)
     {
         $settings = SiteSetting::first();
-        
+
         $dashboard_logo = $settings->dashboard_logo;
         if ($request->hasFile('dashboard_logo')) {
             // Deleting Old Logo Then Replacing it with the new one:
             Storage::disk('public')->delete($dashboard_logo);
             $logo_file = $request->file('dashboard_logo');
-            
+
             $path = 'uploads/images/logos';
             $dashboard_logo =  $logo_file->store($path, ['disk' => 'public']);
         }

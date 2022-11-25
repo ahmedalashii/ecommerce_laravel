@@ -90,74 +90,92 @@
                     </div>
 
                 </div>
-                
-                {{-- 
+
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card-style mb-30">
-                            <div
-                                class="
-                      title
-                      d-flex
-                      flex-wrap
-                      justify-content-between
-                      align-items-center
-                    ">
-                                <div class="left">
-                                    <h6 class="text-medium mb-30">Products</h6>
+                        <div class="card-style">
+                            <h6 class="mb-10">Recent Purchase Transactions</h6>
+                            @if ($last_transactions->isNotEmpty())
+                                <div class="table-wrapper table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <h6>#</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Name</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Store</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Purchaser Name</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Purchaser Address</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Purchaser Phone</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Purchaser Email</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Purchase Price</h6>
+                                                </th>
+                                                <th>
+                                                    <h6>Transaction Time</h6>
+                                                </th>
+                                            </tr>
+                                            <!-- end table row-->
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($last_transactions as $transaction)
+                                                <tr>
+                                                    <td class="min-width">
+                                                        <p>{{ $transaction->id }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>{{ $transaction->product->name }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p style="color: #041d81">
+                                                            {{ $transaction->product->store->name }}
+                                                        </p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>{{ $transaction->name }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>{{ $transaction->address }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>{{ $transaction->phone }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>{{ $transaction->email }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>${{ $transaction->purchase_price }}</p>
+                                                    </td>
+                                                    <td class="min-width">
+                                                        <p>{{ $transaction->created_at }}</p>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <!-- end table -->
                                 </div>
-                            </div>
-                            <!-- End Title -->
-                            <div class="table-responsive">
-                                <table class="table top-selling-table">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                <h6 class="text-sm text-medium">Picture</h6>
-                                            </th>
-                                            <th class="min-width">
-                                                <h6 class="text-sm text-medium">Name</h6>
-                                            </th>
-                                            <th class="min-width">
-                                                <h6 class="text-sm text-medium">Store</h6>
-                                            </th>
-                                            <th class="min-width">
-                                                <h6 class="text-sm text-medium">Base Price</h6>
-                                            </th>
-                                            <th class="min-width">
-                                                <h6 class="text-sm text-medium">Discount Price</h6>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="product">
-                                                    <div class="image">
-                                                        <img src="assets/images/products/product-mini-1.jpg"
-                                                            alt="" />
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">Interior</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">$345</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">43</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-sm">$45</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            @else
+                                <h1>No Purchase Transactions added yet.</h1>
+                            @endif
                         </div>
+                        <!-- end card -->
                     </div>
-                </div> --}}
+                    <!-- end col -->
+                </div>
             </div>
         </section>
     </main>
