@@ -67,7 +67,7 @@ Route::get('/public', [PublicController::class, 'index'])->name('public');
 Route::group(['prefix' => 'public/', 'as' => 'public.'], function () {
     Route::get('/stores', [StoresController::class, 'index'])->name('stores');
     // General Search for products
-    Route::get('/products/search/{search_value}', [ProductsController::class, 'search'])->name('products.search');
+    Route::get('/products/search/{start_price?}/{end_price?}', [ProductsController::class, 'search'])->name('products.search');
     // Search for a specific store products
     Route::get('/products/{store}/{start_price?}/{end_price?}/{search_value?}', [ProductsController::class, 'index'])->name('products');
     // Sorting based on the discount price

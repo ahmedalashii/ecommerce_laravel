@@ -19,6 +19,15 @@
             <div class="col-lg-7 col-md-7 col-6">
                 <div class="header-right">
                     <!-- profile start -->
+                    <div class="menu-toggle-btn mr-20">
+                        <form action="{{ route('public') }}" method="GET">
+                            @csrf
+                            <button type="submit" id="menu-toggle" class="main-btn primary-btn btn-hover"
+                                style="width: auto; padding: 0px 12px; background-color: #4a6cf7;">
+                                Go To Public Site
+                            </button>
+                        </form>
+                    </div>
                     <div class="profile-box ml-15">
                         <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
                             data-bs-toggle="dropdown" aria-expanded="false">

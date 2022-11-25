@@ -7,10 +7,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                        <h4>{{ $store->name }} Products</h4>
+                        <h4>Search Results of "{{ $search_value }}"</h4>
                         <div class="breadcrumb__links">
                             <a href="{{ route('public') }}">Home</a>
-                            <span>{{ $store->name }} Products</span>
+                            <span>"{{ $search_value }}" Products</span>
                         </div>
                     </div>
                 </div>
@@ -23,57 +23,7 @@
     <section class="shop spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="shop__sidebar">
-                        <div class="shop__sidebar__search">
-                            <form action="{{ route('public.products', ['store' => $store->id]) }}" method="GET">
-                                @csrf
-                                <input type="text" placeholder="Search..." name="search">
-                                <button type="submit"><span class="icon_search"></span></button>
-                            </form>
-                        </div>
-                        <div class="shop__sidebar__accordion">
-                            <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__price">
-                                                <ul>
-                                                    <li><a
-                                                            href="{{ route('public.products', ['store' => $store->id, 'start_price' => 0.0, 'end_price' => 50.0]) }}">{{ $site_settings->currency }}0.00
-                                                            -
-                                                            {{ $site_settings->currency }}50.00</a></li>
-                                                    <li><a
-                                                            href="{{ route('public.products', ['store' => $store->id, 'start_price' => 50.0, 'end_price' => 100.0]) }}">{{ $site_settings->currency }}50.00
-                                                            - {{ $site_settings->currency }}100.00</a></li>
-                                                    <li><a
-                                                            href="{{ route('public.products', ['store' => $store->id, 'start_price' => 100.0, 'end_price' => 150.0]) }}">{{ $site_settings->currency }}100.00
-                                                            - {{ $site_settings->currency }}150.00</a></li>
-                                                    <li><a
-                                                            href="{{ route('public.products', ['store' => $store->id, 'start_price' => 150.0, 'end_price' => 200.0]) }}">{{ $site_settings->currency }}150.00
-                                                            - {{ $site_settings->currency }}200.00</a></li>
-                                                    <li><a
-                                                            href="{{ route('public.products', ['store' => $store->id, 'start_price' => 200.0, 'end_price' => 250.0]) }}">{{ $site_settings->currency }}200.00
-                                                            - {{ $site_settings->currency }}250.00</a></li>
-                                                    <li><a
-                                                            href="{{ route('public.products', ['store' => $store->id, 'start_price' => 250]) }}">{{ $site_settings->currency }}250.00+</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <a href="{{ route('public.products', ['store' => $store->id]) }}"
-                                        class="primary-btn">Reset</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <div class="row">
                         <div class="col-12 mt-2">
                             @foreach ($errors->all() as $message)
@@ -91,9 +41,11 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="shop__product__option__right">
-                                        <form action="{{ route('public.products.sort', $store->id) }}" method="GET">
+                                        <form action="{{ route('public.products.search') }}" method="GET">
                                             @csrf
                                             <label for="sort_way">Sort by Price:</label>
+                                            <input type="hidden" name="search_value" id="search_value"
+                                                value="{{ $search_value }}">
                                             <select id="sort_way" name="sort_way" onchange="javascript:this.form.submit()">
                                                 <option value="-1">Select Sorting Way</option>
                                                 <option value="ASC" @if (($sort_way ?? '') == 'ASC') selected @endif>Low
@@ -122,6 +74,7 @@
                                         </div>
                                         <div class="product__item__text">
                                             <h6>{{ $product->name }}</h6>
+                                            <span style="color: #041d81">Store: {{ $product->store->name }}</span>
                                             <a href="{{ route('public.product.order', ['product' => $product->id]) }}"
                                                 class="add-cart">Purchase
                                                 Product</a>
