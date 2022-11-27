@@ -19,7 +19,7 @@ class ProductCheckoutController extends Controller
         return view('public_site.product_order')->with('product', $product)->with('total', $total);
     }
 
-
+    
     public function checkout(ProductCheckoutRequest $request, Product $product)
     {
         $name = $request->input('name');

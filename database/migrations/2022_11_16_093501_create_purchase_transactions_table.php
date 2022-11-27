@@ -15,6 +15,7 @@ class CreatePurchaseTransactionsTable extends Migration
     {
         Schema::create('purchase_transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            // Purchase Info:
             $table->string('name');
             $table->string('address');
             $table->string('phone');
