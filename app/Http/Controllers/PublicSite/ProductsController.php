@@ -48,4 +48,17 @@ class ProductsController extends Controller
         }
         return view('public_site.product_search_results')->with('products', $products)->with('search_value', $search_value)->with('sort_way', $sort_way ?? null);
     }
+
+
+    // Another way:
+    
+    // public function index2(Request $request)
+    // {
+    //     $products = Product::query()
+    //         ->when($request->has('store_id'), fn ($query) => $query->where('store_id', $request->query('store_id')))
+    //         ->when($request->has('start_price'), fn ($query) => $query->where('base_price', '>=', $request->query('start_price')))
+    //         ->when($request->has('end_price'), fn ($query) => $query->where('base_price', '<=', $request->query('end_price')))
+    //         ->when($request->has('search_value'), fn ($query) => $query->where('name', 'LIKE', "%{$request->query('store_id')}%"))
+    //         ->when($request->has('sort_way'), fn ($query) => $query->where('name', 'LIKE', "%{$request->query('store_id')}%"));
+    // }
 }
