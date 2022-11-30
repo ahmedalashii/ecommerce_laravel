@@ -42,7 +42,7 @@
                       ">
                                 <h6>My Profile</h6>
                             </div>
-                            <form action="{{ route('admin.edit.info', $user->id) }}" method="POST"
+                            <form action="{{ route('admin.update.info', $user->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="profile-info">

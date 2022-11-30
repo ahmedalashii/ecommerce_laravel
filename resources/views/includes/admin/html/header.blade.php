@@ -45,7 +45,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                             <li>
-                                <a href="{{ route('admin.settings') }}"> <i class="lni lni-pencil"></i> Edit My Info
+                                <a href="{{ route('admin.info.edit') }}"> <i class="lni lni-pencil"></i> Edit My Info
                                 </a>
                             </li>
                             <li>

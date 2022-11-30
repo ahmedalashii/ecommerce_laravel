@@ -33,8 +33,8 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], f
     Route::get('/site/settings', [HomeController::class, 'edit'])->name('site.settings');
     Route::post('/site/settings', [HomeController::class, 'update']);
 
-    Route::get('/settings', [EditAdminInfoController::class, 'index'])->name('settings');
-    Route::post('/edit/info/{id}', [EditAdminInfoController::class, 'update'])->name('edit.info');
+    Route::get('/edit/info', [EditAdminInfoController::class, 'index'])->name('info.edit');
+    Route::post('/update/info/{id}', [EditAdminInfoController::class, 'update'])->name('update.info');
     // Store:
     Route::get('/store/index', [StoreController::class, 'index'])->name('store.index');
     Route::get('/store/add', [StoreController::class, 'create'])->name('store.add');
@@ -43,7 +43,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], f
     Route::post('/store/update/{store}', [StoreController::class, 'update'])->name('store.update');
     Route::post('/store/destroy/{store}', [StoreController::class, 'destroy'])->name('store.destroy');
     Route::post('/store/restore/{id}', [StoreController::class, 'restore'])->name('store.restore');
-
+    
     // Product:
     Route::get('/product/index', [ProductController::class, 'index'])->name('product.index');
     Route::get('/product/add', [ProductController::class, 'create'])->name('product.add');

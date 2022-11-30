@@ -13,7 +13,7 @@ class EditAdminInfoController extends Controller
 {
     public function index()
     {
-        return view('admin.settings')->with('user', Auth::user());
+        return view('admin.edit')->with('user', Auth::user());
     }
 
     public function update(EditUserRequest $request)
