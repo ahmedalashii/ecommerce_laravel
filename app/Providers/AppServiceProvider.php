@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\SiteSetting;
+use App\Models\SiteSetting;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;

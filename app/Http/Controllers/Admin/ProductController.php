@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Store;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\Product\CreateProductRequest;
-use App\Http\Requests\Product\EditProductRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Product\EditProductRequest;
+use App\Http\Requests\Product\CreateProductRequest;
 
 class ProductController extends Controller
 {

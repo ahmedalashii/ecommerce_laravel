@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\SiteSetting;
+use App\Models\SiteSetting;
 use App\Models\Store;
 use App\Models\Product;
 use Illuminate\Http\Request;

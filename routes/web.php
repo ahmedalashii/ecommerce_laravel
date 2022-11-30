@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StoreController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\StoreController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\PublicSite\PublicController;
 use App\Http\Controllers\PublicSite\StoresController;
 use App\Http\Controllers\Admin\EditAdminInfoController;
 use App\Http\Controllers\PublicSite\ProductCheckoutController;
 use App\Http\Controllers\PublicSite\ProductsController;
-use App\Http\Controllers\PurchaseTransactionController;
+use App\Http\Controllers\Admin\PurchaseTransactionController;
 use App\Models\PurchaseTransaction;
 
 /*

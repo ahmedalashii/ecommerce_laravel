@@ -24,7 +24,7 @@ class ProductsController extends Controller
         } else {
             $products = Product::where('store_id', $store->id)->paginate($per_page);
         }
-
+        
         if ($request->has('search')) {
             $search_value = $request->input('search');
             $products = Product::where('store_id', $store->id)->where('name', 'LIKE', "%{$search_value}%")->paginate($per_page);
@@ -49,7 +49,7 @@ class ProductsController extends Controller
         return view('public_site.product_search_results')->with('products', $products)->with('search_value', $search_value)->with('sort_way', $sort_way ?? null);
     }
 
-
+    
     // Another way:
     
     // public function index2(Request $request)
