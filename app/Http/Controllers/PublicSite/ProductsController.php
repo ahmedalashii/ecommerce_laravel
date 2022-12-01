@@ -12,7 +12,7 @@ class ProductsController extends Controller
 {
     public function index(SortProductRequest $request, Store $store, $start_price = null, $end_price = null)
     {
-        $per_page = 6;
+        $per_page = 2;
         $products = collect();
         if ($start_price != null && $end_price != null) {
             $products = Product::where('store_id', $store->id)->whereBetween('base_price', [$start_price, $end_price])->paginate($per_page);

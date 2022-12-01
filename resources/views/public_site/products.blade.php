@@ -86,7 +86,10 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="shop__product__option__left">
-                                        <p>Showing 1–12 of 126 results</p>
+                                        <p>Showing
+                                            {{ ($products->currentPage() - 1) * $products->perPage() + 1 }}–{{ ($products->currentPage() - 1) * $products->perPage() + $products->count() }}
+                                            of
+                                            {{ $products->total() }} results</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">

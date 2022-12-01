@@ -27,7 +27,6 @@ class ProductController extends Controller
 
     public function store(CreateProductRequest $request)
     {
-        dd('s');
         $name = $request->input('name');
         $description = $request->input('description');
         $base_price = $request->input('base_price');
