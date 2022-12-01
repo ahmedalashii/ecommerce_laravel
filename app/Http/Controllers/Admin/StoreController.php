@@ -63,6 +63,7 @@ class StoreController extends Controller
     public function update(EditStoreRequest $request, Store $store)
     {
         $logo_link = $store->logo;
+        // if there'is a logo file passed with the request >> then delete the old one and replace it by the new one.
         if ($request->hasFile('logo')) {
             // Deleting Old Image Then Replacing it with the new one:
             Storage::disk('public')->delete($store->logo);

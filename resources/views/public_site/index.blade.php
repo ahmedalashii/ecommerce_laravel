@@ -47,7 +47,7 @@
         text-transform: uppercase;
         letter-spacing: 2px;
         margin-bottom: 20px; text-align: center;">
-            Best Stores</h2>
+            Best Selling Stores</h2>
         <br>
         <div class="row">
             @foreach ($stores as $store)

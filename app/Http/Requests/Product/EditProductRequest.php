@@ -24,15 +24,15 @@ class EditProductRequest extends FormRequest
      */
     public function rules()
     {
-        $stores = Store::select('id')->get();
-        $store_ids = "";
-        for ($i = 0; $i < count($stores); $i++) {
-            if ($i == count($stores) - 1) {
-                $store_ids .= $stores[$i]->id;
-            } else {
-                $store_ids .= $stores[$i]->id  . ",";
-            }
-        }
+        // $stores = Store::select('id')->get();
+        // $store_ids = "";
+        // for ($i = 0; $i < count($stores); $i++) {
+        //     if ($i == count($stores) - 1) {
+        //         $store_ids .= $stores[$i]->id;
+        //     } else {
+        //         $store_ids .= $stores[$i]->id  . ",";
+        //     }
+        // }
         return [
             'name' => 'required|string',
             'description' => 'required|string',
@@ -48,7 +48,8 @@ class EditProductRequest extends FormRequest
                 'min:5',
                 'regex:/^(([0-9]*)(\.([0-9]+))?)$/',
             ],
-            'store' => 'required|numeric|in:' . $store_ids,
+            // 'store' => 'required|numeric|in:' . $store_ids,
+            'store' => 'required|numeric|exists:stores,id,deleted_at,NULL',
             'product_picture' => 'mimes:jpeg,jpg,png'
         ];
     }

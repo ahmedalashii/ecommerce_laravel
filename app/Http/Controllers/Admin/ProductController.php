@@ -27,6 +27,7 @@ class ProductController extends Controller
 
     public function store(CreateProductRequest $request)
     {
+        dd('s');
         $name = $request->input('name');
         $description = $request->input('description');
         $base_price = $request->input('base_price');
@@ -41,7 +42,7 @@ class ProductController extends Controller
         $path = 'uploads/images/products/' . $store->name;
 
         $picture_link =  $product_picture->store($path, ['disk' => 'public']);
-        
+
         $product = new Product();
         $product->name = $name;
         $product->description = $description;
