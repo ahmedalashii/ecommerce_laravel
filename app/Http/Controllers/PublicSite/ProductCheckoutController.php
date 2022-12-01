@@ -35,7 +35,6 @@ class ProductCheckoutController extends Controller
         $purchase_transaction->product_id = $product->id;
         $purchase_transaction->purchase_price = $product->is_discount ? $product->discount_price : $product->base_price;
         $purchase_transaction->save();
-
         return redirect('public/products/' . $product->store_id)->with(['success' => 'Product Purchased Successfully', 'type' => 'success']);
     }
 }

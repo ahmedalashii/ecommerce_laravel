@@ -24,16 +24,6 @@ class CreateProductRequest extends FormRequest
      */
     public function rules()
     {
-        // $stores = Store::select('id')->get();
-        // $store_ids = "";
-        // for ($i = 0; $i < count($stores); $i++) {
-        //     if ($i == count($stores) - 1) {
-        //         $store_ids .= $stores[$i]->id;
-        //     } else {
-        //         $store_ids .= $stores[$i]->id  . ",";
-        //     }
-        // }
-
         return [
             'name' => 'required|string',
             'description' => 'required|string',
@@ -49,7 +39,6 @@ class CreateProductRequest extends FormRequest
                 'min:5',
                 'regex:/^(([0-9]*)(\.([0-9]+))?)$/',
             ],
-            // 'store' => 'required|numeric|in:' . $store_ids,
             // in stores table, id column, deleted_at = null
             'store' => 'required|numeric|exists:stores,id,deleted_at,NULL',
             'product_picture' => 'required|mimes:jpeg,jpg,png'

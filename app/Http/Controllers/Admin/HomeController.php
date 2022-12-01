@@ -63,7 +63,7 @@ class HomeController extends Controller
             $path = 'uploads/images/logos';
             $dashboard_logo =  $logo_file->store($path, ['disk' => 'public']);
         }
-
+        
         $site_logo = $settings->public_site_logo;
         if ($request->hasFile('site_logo')) {
             // Deleting Old Logo Then Replacing it with the new one:

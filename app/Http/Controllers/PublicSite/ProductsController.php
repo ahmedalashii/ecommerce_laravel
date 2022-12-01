@@ -16,15 +16,12 @@ class ProductsController extends Controller
         $products = collect();
         if ($start_price != null && $end_price != null) {
             $products = Product::where('store_id', $store->id)->whereBetween('base_price', [$start_price, $end_price])->paginate($per_page);
-            if ($products->isEmpty()) {
-                $products = Product::where('store_id', $store->id)->whereBetween('discount_price', [$start_price, $end_price])->paginate($per_page);
-            }
         } elseif ($start_price != null) {
             $products = Product::where('store_id', $store->id)->where('base_price', '>=', $start_price)->paginate($per_page);
         } else {
             $products = Product::where('store_id', $store->id)->paginate($per_page);
         }
-        
+
         if ($request->has('search')) {
             $search_value = $request->input('search');
             $products = Product::where('store_id', $store->id)->where('name', 'LIKE', "%{$search_value}%")->paginate($per_page);
@@ -49,9 +46,9 @@ class ProductsController extends Controller
         return view('public_site.product_search_results')->with('products', $products)->with('search_value', $search_value)->with('sort_way', $sort_way ?? null);
     }
 
-    
+
     // Another way:
-    
+
     // public function index2(Request $request)
     // {
     //     $products = Product::query()

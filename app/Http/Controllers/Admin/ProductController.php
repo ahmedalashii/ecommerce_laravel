@@ -39,7 +39,7 @@ class ProductController extends Controller
         $product_picture = $request->file('product_picture');
 
         $path = 'uploads/images/products/' . $store->name;
-
+        
         $picture_link =  $product_picture->store($path, ['disk' => 'public']);
 
         $product = new Product();
@@ -75,7 +75,7 @@ class ProductController extends Controller
             $path = 'uploads/images/products/' . $store->name . "/";
             $picture_link =  $product_picture->store($path, ['disk' => 'public']);
         }
-
+        
         $name = $request->input('name');
         $description = $request->input('description');
         $base_price = $request->input('base_price');

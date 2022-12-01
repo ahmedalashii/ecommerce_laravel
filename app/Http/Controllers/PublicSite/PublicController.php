@@ -11,8 +11,6 @@ class PublicController extends Controller
 {
     public function index()
     {
-        $stores = Store::with('products')->take(4)->get();
-
         // These are the stores that selling the most (that has the most occurrences in purchase transactions) ..
         $stores = Store::select(DB::raw('COUNT(stores.id) as number_of_purchases, stores.*'))
             ->join('products', 'products.store_id', '=', 'stores.id')
@@ -21,9 +19,6 @@ class PublicController extends Controller
             ->groupBy('stores.id')
             ->take(4)
             ->get();
-
-        // dd($stores);
-
         return view('public_site.index')->with('stores', $stores);
     }
 }
