@@ -35,9 +35,10 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], f
 
     Route::get('/edit/info', [EditAdminInfoController::class, 'index'])->name('info.edit');
     Route::post('/update/info/{id}', [EditAdminInfoController::class, 'update'])->name('update.info');
+    
     // Store:
     Route::get('/store/index', [StoreController::class, 'index'])->name('store.index');
-    Route::get('/store/add', [StoreController::class, 'create'])->name('store.add');
+    Route::get('/store/create', [StoreController::class, 'create'])->name('store.create');
     Route::post('/store/store', [StoreController::class, 'store'])->name('store.store');
     Route::get('/store/edit/{store}', [StoreController::class, 'edit'])->name('store.edit');
     Route::post('/store/update/{store}', [StoreController::class, 'update'])->name('store.update');

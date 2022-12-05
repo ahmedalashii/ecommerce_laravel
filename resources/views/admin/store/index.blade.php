@@ -130,7 +130,7 @@
                             @else
                                 <p>
                                 <h1>No Stores added yet.</h1>
-                                <a href="{{ route('admin.store.add') }}">Click here to add a
+                                <a href="{{ route('admin.store.create') }}">Click here to add a
                                     store.</a>
                                 </p>
                             @endif

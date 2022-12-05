@@ -46,7 +46,7 @@
                   </a>
                   <ul id="store_menu" class="collapse dropdown-nav">
                       <li>
-                          <a href="{{ route('admin.store.add') }}">Add New Store</a>
+                          <a href="{{ route('admin.store.create') }}">Add New Store</a>
                       </li>
                       <li>
                           <a href="{{ route('admin.store.index') }}">View All Stores</a>
