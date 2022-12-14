@@ -22,7 +22,7 @@
                                 src="{{ asset('public_site/images/icons/search.png') }}" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-3">
+                {{-- <div class="col-lg-2 col-md-3">
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li>
@@ -36,7 +36,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div> --}}
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
