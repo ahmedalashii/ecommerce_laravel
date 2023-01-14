@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\EditAdminInfoController;
 use App\Http\Controllers\PublicSite\ProductCheckoutController;
 use App\Http\Controllers\PublicSite\ProductsController;
 use App\Http\Controllers\Admin\PurchaseTransactionController;
+use App\Http\Controllers\PhotoController;
 use App\Models\PurchaseTransaction;
 
 /*
@@ -35,7 +36,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], f
 
     Route::get('/edit/info', [EditAdminInfoController::class, 'index'])->name('info.edit');
     Route::post('/update/info/{id}', [EditAdminInfoController::class, 'update'])->name('update.info');
-    
+
     // Store:
     Route::get('/store/index', [StoreController::class, 'index'])->name('store.index');
     Route::get('/store/create', [StoreController::class, 'create'])->name('store.create');
@@ -44,7 +45,7 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], f
     Route::post('/store/update/{store}', [StoreController::class, 'update'])->name('store.update');
     Route::post('/store/destroy/{store}', [StoreController::class, 'destroy'])->name('store.destroy');
     Route::post('/store/restore/{id}', [StoreController::class, 'restore'])->name('store.restore');
-    
+
     // Product:
     Route::get('/product/index', [ProductController::class, 'index'])->name('product.index');
     Route::get('/product/add', [ProductController::class, 'create'])->name('product.add');
@@ -76,3 +77,15 @@ Route::group(['prefix' => 'public/', 'as' => 'public.'], function () {
     Route::get('/product/{product}/order', [ProductCheckoutController::class, 'index'])->name('product.order');
     Route::post('/product/{product}/checkout', [ProductCheckoutController::class, 'checkout'])->name('product.checkout');
 });
+
+// Route::resource('photos', PhotoController::class);
+
+// Actions Handled By Resource Controller:
+// Verb          URI	                 Action	     Route Name
+// GET	        /photos                  index	     photos.index
+// GET	        /photos/create	         create	     photos.create
+// POST	        /photos                  store	     photos.store
+// GET	        /photos/{photo}          show    	 photos.show
+// GET	        /photos/{photo}/edit	 edit	     photos.edit
+// PUT/PATCH	/photos/{photo}	         update	     photos.update
+// DELETE	    /photos/{photo}	         destroy	 photos.destroy
