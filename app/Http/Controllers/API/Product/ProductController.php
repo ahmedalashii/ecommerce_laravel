@@ -12,13 +12,13 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $per_page = $request->query('per_page');
-        $products = Product::withTrashed()->with('store:id,name')->paginate($per_page);
+        $products = Product::withTrashed()->with('store')->paginate($per_page);
         return ProductResource::collection($products);
     }
 
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::find($id);
         return ProductResource::make($product);
     }
 }
