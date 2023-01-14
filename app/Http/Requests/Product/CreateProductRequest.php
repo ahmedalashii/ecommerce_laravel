@@ -44,9 +44,4 @@ class CreateProductRequest extends FormRequest
             'product_picture' => 'required|mimes:jpeg,jpg,png'
         ];
     }
-
-    public function messages()
-    {
-        return [];
-    }
 }

@@ -10,7 +10,8 @@ class Product extends Model
     use SoftDeletes;
 
     public function getPriceAttribute()
-    { // Product::find($id)->price
+    {
+        // Product::find($id)->price
         return $this->is_discount ? $this->discount_price : $this->base_price;
     }
 

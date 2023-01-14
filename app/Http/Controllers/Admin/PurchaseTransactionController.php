@@ -16,7 +16,7 @@ class PurchaseTransactionController extends Controller
         $purchase_transactions = PurchaseTransaction::withTrashed()->with(['product', 'product.store'])->paginate($per_page);
         return view('admin.purchase_transaction.index')->with('purchase_transactions', $purchase_transactions);
     }
-    
+
     public function report()
     {
         $per_page = 5;

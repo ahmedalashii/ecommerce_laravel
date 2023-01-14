@@ -73,13 +73,13 @@
                                     </div>
                                     <div class="input-style-1">
                                         <label for="base_price">Base Price <b style="color: #d50100">*</b></label>
-                                        <input type="number" placeholder="Base Price" value="0" name="base_price"
-                                            id="base_price" min="0" />
+                                        <input type="number" placeholder="Base Price" value="10" name="base_price"
+                                            id="base_price" min="10" />
                                     </div>
                                     <div class="input-style-1">
                                         <label for="discount_price">Discount Price <b style="color: #d50100">*</b></label>
-                                        <input type="number" placeholder="Discount Price" value="0"
-                                            name="discount_price" id="discount_price" min="0" />
+                                        <input type="number" placeholder="Discount Price" value="5"
+                                            name="discount_price" id="discount_price" min="5" />
                                     </div>
 
 

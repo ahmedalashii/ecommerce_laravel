@@ -12,9 +12,12 @@ use App\Models\PurchaseTransaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\SiteSettingRequest;
+use App\Http\Traits\FileProcessingTrait;
 
 class HomeController extends Controller
 {
+    use FileProcessingTrait;
+
     /**
      * Create a new controller instance.
      *
@@ -45,44 +48,17 @@ class HomeController extends Controller
 
     public function edit()
     {
-        $settings = SiteSetting::first();
         $currencies = ["$" => "USD", "€" => "EURO", "₪" => "SHEKEL"];
-        return view('admin.settings.edit')->with('settings', $settings)->with('currencies', $currencies);
+        return view('admin.settings.edit')->with('currencies', $currencies);
     }
 
     public function update(SiteSettingRequest $request)
     {
         $settings = SiteSetting::first();
 
-        $dashboard_logo = $settings->dashboard_logo;
-        if ($request->hasFile('dashboard_logo')) {
-            // Deleting Old Logo Then Replacing it with the new one:
-            Storage::disk('public')->delete($dashboard_logo);
-            $logo_file = $request->file('dashboard_logo');
-
-            $path = 'uploads/images/logos';
-            $dashboard_logo =  $logo_file->store($path, ['disk' => 'public']);
-        }
-        
-        $site_logo = $settings->public_site_logo;
-        if ($request->hasFile('site_logo')) {
-            // Deleting Old Logo Then Replacing it with the new one:
-            Storage::disk('public')->delete($site_logo);
-            $logo_file = $request->file('site_logo');
-
-            $path = 'uploads/images/logos';
-            $site_logo =  $logo_file->store($path, ['disk' => 'public']);
-        }
-
-        $site_light_logo = $settings->public_site_light_logo;
-        if ($request->hasFile('site_light_logo')) {
-            // Deleting Old Logo Then Replacing it with the new one:
-            Storage::disk('public')->delete($site_light_logo);
-            $logo_file = $request->file('site_light_logo');
-
-            $path = 'uploads/images/logos';
-            $site_light_logo =  $logo_file->store($path, ['disk' => 'public']);
-        }
+        $dashboard_logo = $this->update_file($request, $settings->dashboard_logo, 'dashboard_logo', 'uploads/images/logos');
+        $site_logo = $this->update_file($request, $settings->public_site_logo, 'site_logo', 'uploads/images/logos');
+        $site_light_logo = $this->update_file($request, $settings->public_site_light_logo, 'site_light_logo', 'uploads/images/logos');
 
         $country = $request->input('country');
         $address = $request->input('address');
@@ -98,7 +74,7 @@ class HomeController extends Controller
         $settings->dashboard_logo = $dashboard_logo;
         $settings->public_site_logo = $site_logo;
         $settings->public_site_light_logo = $site_light_logo;
-        $settings->update();
-        return redirect()->back()->with(['success' => 'Site Settings Updated Successfully', 'type' => 'success']);
+        $status = $settings->update();
+        return redirect()->back()->with([$status ? 'success' : 'fail' => $status ? 'Site Settings Updated Successfully' : 'Something is wrong!', 'type' => $status ? 'success' : 'error']);
     }
 }

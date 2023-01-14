@@ -25,31 +25,13 @@ class EditUserRequest extends FormRequest
      */
     public function rules()
     {
-        // $user_emails = User::select('email')->get();
-        // $forbidden_emails = "";
-        // for ($i = 0; $i < count($user_emails); $i++) {
-        //     if ($i == count($user_emails) - 1 && ($user_emails[$i]->email != Auth::user()->email)) {
-        //         $forbidden_emails .= $user_emails[$i]->email;
-        //     } else if ($user_emails[$i]->email != Auth::user()->email) {
-        //         $forbidden_emails .= $user_emails[$i]->email  . ",";
-        //     }
-        // }
-        // dd($forbidden_emails);
         $current_user_id = Auth::user()->id;
         return [
             'name' => 'required|string',
-            // 'email' => 'required|string|email|notin:' . $forbidden_emails,
             'email' => "required|string|unique:users,email,$current_user_id",
             'address' => 'required|string',
             'about_me' => 'required|string',
             'user_picture' => 'mimes:jpeg,jpg,png',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            "email.notin" => "This email is already taken!",
         ];
     }
 }

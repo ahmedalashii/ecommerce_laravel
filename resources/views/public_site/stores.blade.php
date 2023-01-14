@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="product__item__text">
                                         <h6 style="font-weight: 700; font-size: 18px;">{{ $store->name }}</h6>
-                                        <a href="{{ route('public.products', $store->id, 5) }}" class="add-cart">Shop Now</a>
+                                        <a href="{{ route('public.products', $store->id) }}" class="add-cart">Shop Now</a>
                                         <h5 style="font-weight: 500; font-size: 14px;">{{ $store->address }}</h5>
                                     </div>
                                 </div>

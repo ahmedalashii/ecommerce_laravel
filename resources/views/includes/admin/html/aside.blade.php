@@ -69,9 +69,6 @@
                       <li>
                           <a href="{{ route('admin.product.add') }}">Add New
                               Product</a>
-                          {{-- <a href="{{ route('admin.product.add') }}"
-                              @if (Route::current()->getName() == 'admin.product.add') class="active" @endif>Add New
-                              Product</a> --}}
                       </li>
                       <li>
                           <a href="{{ route('admin.product.index') }}">View All Products</a>

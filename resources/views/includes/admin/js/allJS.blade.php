@@ -54,7 +54,7 @@
                 popup: 'swal-wide',
             }
         });
-        
+
         $('.deactivateForm').on('click', function(event) {
             // the default action of the event will not be triggered. >> or we can change the type from submit to be a normal button
             event

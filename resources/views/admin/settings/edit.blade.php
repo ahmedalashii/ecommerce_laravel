@@ -72,31 +72,32 @@
                                         <div class="input-style-1">
                                             <label for="country">Country <b style="color: #d50100">*</b></label>
                                             <input type="text" placeholder="Country" id="country" name="country"
-                                                value=" {{ $settings->country }} " required />
+                                                value=" {{ $site_settings->country }} " required />
                                         </div>
                                     </div>
                                     <div class="input-style-1">
                                         <label for="address">Address <b style="color: #d50100">*</b></label>
                                         <input type="text" placeholder="Address" name="address" id="address" required
-                                            value="{{ $settings->address }}" />
+                                            value="{{ $site_settings->address }}" />
                                     </div>
                                     <div class="select-style-1">
-                                        <label for="currency">Currency <b
-                                                style="color: #d50100">*</b></label>
+                                        <label for="currency">Currency <b style="color: #d50100">*</b></label>
                                         <div class="select-position">
                                             <select id="currency" name="currency" required>
                                                 <option value="-1">Select Currency</option>
                                                 @foreach ($currencies ?? [] as $currency_key => $currency_value)
-                                                    <option value="{{ $currency_key }}" @if ($settings->currency == $currency_key) selected @endif>{{ $currency_key . " " . $currency_value }}</option>
+                                                    <option value="{{ $currency_key }}"
+                                                        @if ($site_settings->currency == $currency_key) selected @endif>
+                                                        {{ $currency_key . ' ' . $currency_value }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="input-style-1">
                                         <label for="description">Description <b style="color: #d50100">*</b></label>
                                         <div class="input-style-3">
-                                            <textarea name="description" id="description" rows="5" placeholder="Enter Site's Description Here">{{ $settings->description }}</textarea>
+                                            <textarea name="description" id="description" rows="5" placeholder="Enter Site's Description Here">{{ $site_settings->description }}</textarea>
                                             <span class="icon">
                                                 <i class="lni lni-text-format"></i>
                                             </span>

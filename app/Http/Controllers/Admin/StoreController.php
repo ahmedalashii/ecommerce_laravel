@@ -8,9 +8,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Store\EditStoreRequest;
 use App\Http\Requests\Store\CreateStoreRequest;
+use App\Http\Traits\FileProcessingTrait;
 
 class StoreController extends Controller
 {
+    use FileProcessingTrait;
+
     public function index()
     {
         $paginate = 5;
@@ -51,8 +54,8 @@ class StoreController extends Controller
         $store->address = $address;
         // Storing the logo's path in database:
         $store->logo = $logo_link;
-        $store->save();
-        return redirect('admin/store/index')->with(['success' => 'Store Added Successfully', 'type' => 'success']); // send the status and a success message must be shown
+        $status = $store->save();
+        return redirect('admin/store/index')->with([$status ? 'success' : 'fail' => $status ? 'Store Added Successfully' : 'Something is wrong!', 'type' => $status ? 'success' : 'error']); // send the status and a success message must be shown
     }
 
     public function edit(Store $store)
@@ -62,15 +65,7 @@ class StoreController extends Controller
 
     public function update(EditStoreRequest $request, Store $store)
     {
-        $logo_link = $store->logo;
-        // if there'is a logo file passed with the request >> then delete the old one and replace it by the new one.
-        if ($request->hasFile('logo')) {
-            // Deleting Old Image Then Replacing it with the new one:
-            Storage::disk('public')->delete($store->logo);
-            $logo = $request->file('logo');
-            $path = 'uploads/images/stores/';
-            $logo_link =  $logo->store($path, ['disk' => 'public']);
-        }
+        $logo_link = $this->update_file($request, $store->logo, 'logo', 'uploads/images/stores/');
         // More clean way:
         // $attibutes = $request->validated();
         // $attibutes["logo"] = $logo_link;
@@ -83,9 +78,9 @@ class StoreController extends Controller
         $store->address = $address;
         $store->logo = $logo_link;
         // Updating Store:
-        $store->update();
+        $status = $store->update();
         // with function with redirect creates a session
-        return redirect('admin/store/index')->with(['success' => 'Store Updated Successfully', 'type' => 'success']);
+        return redirect('admin/store/index')->with([$status ? 'success' : 'fail' => $status ? 'Store Updated Successfully' : 'Something is wrong!', 'type' => $status ? 'success' : 'error']);
     }
 
 
@@ -106,7 +101,7 @@ class StoreController extends Controller
 
     public function restore($id)
     {
-        Store::onlyTrashed()->find($id)->restore();
-        return redirect()->back()->with(['success' => 'Store Activated Successfully', 'type' => 'success']);
+        $status = Store::onlyTrashed()->find($id)->restore();
+        return redirect()->back()->with([$status ? 'success' : 'fail' => $status ? 'Store Activated Successfully' : 'Something is wrong!', 'type' => $status ? 'success' : 'error']);
     }
 }

@@ -15,11 +15,11 @@ class ProductCheckoutController extends Controller
     {
         $total = 0;
         // if array of products in the cart >> doing other stuff
-        $total += $product->is_discount ? $product->discount_price : $product->base_price;
+        $total += $product->price;
         return view('public_site.product_order')->with('product', $product)->with('total', $total);
     }
 
-    
+
     public function checkout(ProductCheckoutRequest $request, Product $product)
     {
         $name = $request->input('name');
@@ -33,8 +33,8 @@ class ProductCheckoutController extends Controller
         $purchase_transaction->phone = $phone;
         $purchase_transaction->email = $email;
         $purchase_transaction->product_id = $product->id;
-        $purchase_transaction->purchase_price = $product->is_discount ? $product->discount_price : $product->base_price;
-        $purchase_transaction->save();
-        return redirect('public/products/' . $product->store_id)->with(['success' => 'Product Purchased Successfully', 'type' => 'success']);
+        $purchase_transaction->purchase_price = $product->price;
+        $status = $purchase_transaction->save();
+        return redirect('public/products/' . $product->store_id)->with([$status ? 'success' : 'fail' => $status ? 'Product Purchased Successfully' : 'Something is wrong!', 'type' => $status ? 'success' : 'error']);
     }
 }

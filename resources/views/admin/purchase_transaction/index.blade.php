@@ -7,13 +7,13 @@
         <div class="title-wrapper pt-20 pl-30">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                <div class="title mb-30">
+                    <div class="title mb-30">
                         <h2>Purchase Transactions</h2>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <section class="section">
             <div class="container-fluid">
                 <div class="row">
@@ -65,6 +65,8 @@
                                                         <p>{{ $purchase_transaction->product->name }}</p>
                                                     </td>
                                                     <td class="min-width">
+                                                        {{-- <a
+                                                            href="{{ route('admin.store.edit', $purchase_transaction->product->store->id) }}">{{ $purchase_transaction->product->store->name }}</a> --}}
                                                         <p style="color: #041d81">
                                                             {{ $purchase_transaction->product->store->name }}
                                                         </p>
@@ -82,7 +84,8 @@
                                                         <p>{{ $purchase_transaction->email }}</p>
                                                     </td>
                                                     <td class="min-width">
-                                                        <p>{{ $site_settings->currency . $purchase_transaction->purchase_price }}</p>
+                                                        <p>{{ $site_settings->currency . $purchase_transaction->purchase_price }}
+                                                        </p>
                                                     </td>
                                                     <td class="min-width">
                                                         <p>{{ $purchase_transaction->created_at }}</p>

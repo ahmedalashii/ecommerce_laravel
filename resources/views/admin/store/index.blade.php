@@ -79,7 +79,6 @@
                                                     </td>
                                                     <td>
                                                         @if ($store->trashed())
-                                                            @csrf
                                                             <button class="main-btn light-btn rounded-full btn-hover"
                                                                 style="width: 100px; padding: 11px; color: grey !important; cursor: not-allowed;"
                                                                 disabled>

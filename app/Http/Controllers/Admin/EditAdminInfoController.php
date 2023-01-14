@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User;
+use App\Http\Traits\FileProcessingTrait;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\User\EditUserRequest;
-use Illuminate\Support\Facades\Storage;
 
 class EditAdminInfoController extends Controller
 {
+
+    use FileProcessingTrait;
+
     public function index()
     {
         return view('admin.edit')->with('user', Auth::user());
@@ -25,15 +28,7 @@ class EditAdminInfoController extends Controller
         // $user = Auth::user();
 
 
-        $picture_link = $user->picture;
-        if ($request->hasFile('user_picture')) {
-            // Deleting Old Image Then Replacing it with the new one:
-            Storage::disk('public')->delete($user->picture);
-            // Getting the file uploaded:
-            $user_picture = $request->file('user_picture');
-            $path = 'uploads/images/admin/';
-            $picture_link =  $user_picture->store($path, ['disk' => 'public']);
-        }
+        $picture_link = $this->update_file($request, $user->picture, 'user_picture', 'uploads/images/admin/');
 
         $name = $request->input('name');
         $email = $request->input('email');
@@ -46,7 +41,7 @@ class EditAdminInfoController extends Controller
         $user->description = $about_me;
         $user->picture = $picture_link;
         // Updating User Info:
-        $user->update();
-        return redirect()->back()->with(['success' => 'User Updated Successfully', 'type' => 'success']);
+        $status = $user->update();
+        return redirect()->back()->with([$status ? 'success' : 'fail' => $status ? 'User Updated Successfully' : 'Something is wrong!', 'type' => $status ? 'success' : 'error']);
     }
 }

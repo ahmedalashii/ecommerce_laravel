@@ -31,7 +31,7 @@ Auth::routes();
 Route::get('/admin', [HomeController::class, 'index'])->name('admin');
 Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::get('/site/settings', [HomeController::class, 'edit'])->name('site.settings');
-    Route::post('/site/settings', [HomeController::class, 'update']);
+    Route::post('/site/settings', [HomeController::class, 'update'])->name('site.settings');
 
     Route::get('/edit/info', [EditAdminInfoController::class, 'index'])->name('info.edit');
     Route::post('/update/info/{id}', [EditAdminInfoController::class, 'update'])->name('update.info');

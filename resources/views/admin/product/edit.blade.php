@@ -78,14 +78,14 @@
                                     <div class="input-style-1">
                                         <label for="base_price">Base Price (USD) <b style="color: #d50100">*</b></label>
                                         <input type="number" placeholder="Base Price" value="{{ $product->base_price }}"
-                                            name="base_price" id="base_price" min="0" />
+                                            name="base_price" id="base_price" min="10" />
                                     </div>
                                     <div class="input-style-1">
                                         <label for="discount_price">Discount Price (USD)<b
                                                 style="color: #d50100">*</b></label>
                                         <input type="number" placeholder="Discount Price"
                                             value="{{ $product->discount_price }}" name="discount_price" id="discount_price"
-                                            min="0" />
+                                            min="5" />
                                     </div>
 
 
