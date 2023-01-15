@@ -56,6 +56,6 @@ class ProductsController extends Controller
     //         ->when($request->has('start_price'), fn ($query) => $query->where('base_price', '>=', $request->query('start_price')))
     //         ->when($request->has('end_price'), fn ($query) => $query->where('base_price', '<=', $request->query('end_price')))
     //         ->when($request->has('search_value'), fn ($query) => $query->where('name', 'LIKE', "%{$request->query('store_id')}%"))
-    //         ->when($request->has('sort_way'), fn ($query) => $query->where('name', 'LIKE', "%{$request->query('store_id')}%"));
+    //         ->when($request->has('sort_way'), fn ($query) => $query->orderBy('discount_price', $request->query('sort_way')));
     // }
 }

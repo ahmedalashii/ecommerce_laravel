@@ -71,7 +71,7 @@ Route::group(['prefix' => 'public/', 'as' => 'public.'], function () {
     // General Search for products
     Route::get('/products/search', [ProductsController::class, 'search'])->name('products.search');
     // Search for a specific store products
-    Route::get('/products/{store}/{start_price?}/{end_price?}/{search_value?}', [ProductsController::class, 'index'])->name('products');
+    Route::get('/products/{store}/{start_price?}/{end_price?}', [ProductsController::class, 'index'])->name('products');
     // Sorting based on the discount price
     Route::get('/products/{store}/sort', [ProductsController::class, 'index'])->name('products.sort');
     Route::get('/product/{product}/order', [ProductCheckoutController::class, 'index'])->name('product.order');
@@ -79,6 +79,8 @@ Route::group(['prefix' => 'public/', 'as' => 'public.'], function () {
 });
 
 // Route::resource('photos', PhotoController::class);
+// Route::resource('photos', PhotoController::class)->only(['index','show']);
+// Route::resource('photos', PhotoController::class)->except(['index','show']);
 
 // Actions Handled By Resource Controller:
 // Verb          URI	                 Action	     Route Name

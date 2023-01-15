@@ -6,9 +6,9 @@ use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Traits\FileProcessingTrait;
 use App\Http\Requests\Store\EditStoreRequest;
 use App\Http\Requests\Store\CreateStoreRequest;
-use App\Http\Traits\FileProcessingTrait;
 
 class StoreController extends Controller
 {
@@ -38,6 +38,7 @@ class StoreController extends Controller
 
         $name = $request->input('name');
         $address = $request->input('address');
+
         $logo = $request->file('logo');
         $path = 'uploads/images/stores/';
 
@@ -67,9 +68,9 @@ class StoreController extends Controller
     {
         $logo_link = $this->update_file($request, $store->logo, 'logo', 'uploads/images/stores/');
         // More clean way:
-        // $attibutes = $request->validated();
-        // $attibutes["logo"] = $logo_link;
-        // $store->update($attibutes);
+        // $attributes = $request->validated();
+        // $attributes["logo"] = $logo_link;
+        // $store->update($attributes);
 
         $name = $request->input('name');
         $address = $request->input('address');
